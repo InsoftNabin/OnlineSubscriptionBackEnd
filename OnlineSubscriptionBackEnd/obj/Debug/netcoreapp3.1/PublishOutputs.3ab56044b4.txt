@@ -5,6 +5,7 @@ D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\D
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\OnlineSubscriptionBackEnd.deps.json
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\OnlineSubscriptionBackEnd.runtimeconfig.json
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\OnlineSubscriptionBackEnd.pdb
+D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\BouncyCastle.Crypto.dll
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\IKVM.AWT.WinForms.dll
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\IKVM.OpenJDK.Beans.dll
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\IKVM.OpenJDK.Charsets.dll
@@ -33,6 +34,7 @@ D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\D
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\IKVM.OpenJDK.XML.XPath.dll
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\IKVM.Runtime.JNI.dll
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\IKVM.Runtime.dll
+D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\itextsharp.dll
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\Microsoft.AspNetCore.JsonPatch.dll
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\Microsoft.AspNetCore.Razor.Language.dll
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\publish\Microsoft.CodeAnalysis.dll

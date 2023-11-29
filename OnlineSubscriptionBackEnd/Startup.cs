@@ -53,9 +53,13 @@ namespace OnlineSubscriptionBackEnd
 
             app.UseAuthorization();
 
+           
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=weatherforecast}/{Action=Index}");
             });
         }
     }

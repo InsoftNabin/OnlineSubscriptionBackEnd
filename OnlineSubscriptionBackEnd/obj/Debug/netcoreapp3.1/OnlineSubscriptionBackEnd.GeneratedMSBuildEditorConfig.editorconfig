@@ -1,3 +1,5 @@
 is_global = true
 build_property.RootNamespace = OnlineSubscriptionBackEnd
 build_property.ProjectDir = D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
