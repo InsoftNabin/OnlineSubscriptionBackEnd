@@ -42,6 +42,7 @@ namespace OnlineSubscriptionBackEnd.Controllers
                 SqlParameter[] parm = {
                     new SqlParameter("@TokenNo", em.TokenNo),
                     new SqlParameter("@CompanyName", em.CompanyName),
+                    new SqlParameter("@Module", em.Module),
                     new SqlParameter("@DisplayName", em.DisplayName),
                     new SqlParameter("@Initial", em.Initial),
                     new SqlParameter("@PanVatNo", em.PanVatNo),
@@ -92,6 +93,42 @@ namespace OnlineSubscriptionBackEnd.Controllers
                     new SqlParameter("@Token", em.Token)
                 };
                 int Block = dh.InsertUpdate("Usp_s_OrganizationDetailsById", parm, CommandType.StoredProcedure);
+                return Json(Block);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
+        public JsonResult TrashOrganizationsById([FromBody] OrgDetails em)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@TokenNo", em.TokenNo),
+                    new SqlParameter("@Token", em.Token)
+                };
+                int Block = dh.InsertUpdate("Usp_D_OrganaizationDetails", parm, CommandType.StoredProcedure);
+                return Json(Block);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        [HttpPost]
+        public JsonResult GetModules([FromBody] OrgDetails em)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@TokenNo", em.TokenNo)
+                };
+                int Block = dh.InsertUpdate("Usp_S_Modules", parm, CommandType.StoredProcedure);
                 return Json(Block);
 
             }
