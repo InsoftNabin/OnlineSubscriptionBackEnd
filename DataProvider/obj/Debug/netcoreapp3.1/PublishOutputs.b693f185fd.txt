@@ -1,0 +1,3 @@
+D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\DataProvider\bin\Debug\netcoreapp3.1\publish\DataProvider.dll
+D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\DataProvider\bin\Debug\netcoreapp3.1\publish\DataProvider.deps.json
+D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\DataProvider\bin\Debug\netcoreapp3.1\publish\DataProvider.pdb

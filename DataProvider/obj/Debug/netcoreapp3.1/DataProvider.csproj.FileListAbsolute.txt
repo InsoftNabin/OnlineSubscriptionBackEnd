@@ -7,3 +7,4 @@ D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\DataProvider\obj\Debug\netcorea
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\DataProvider\obj\Debug\netcoreapp3.1\DataProvider.csproj.CoreCompileInputs.cache
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\DataProvider\obj\Debug\netcoreapp3.1\DataProvider.dll
 D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\DataProvider\obj\Debug\netcoreapp3.1\DataProvider.pdb
+D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\DataProvider\obj\Debug\netcoreapp3.1\DataProvider.sourcelink.json
