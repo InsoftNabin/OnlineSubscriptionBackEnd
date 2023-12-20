@@ -23,5 +23,20 @@ namespace OnlineSubscriptionBackEnd.Controllers
                 throw ex;
             }
         }
+
+        [HttpPost]
+        public JsonResult ValidateAdmin([FromBody] LoginValidator lv)
+        {
+            try
+            {
+                LoginValidation lv1 = new LoginValidation();
+                SelectLoginInfo li = lv1.GetAdminValidation(lv);
+                return Json(li);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

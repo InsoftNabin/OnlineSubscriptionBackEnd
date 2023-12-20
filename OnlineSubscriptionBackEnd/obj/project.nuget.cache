@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RXf9p+mgALp0gJxhUiv2cNV/vB0tqoZfq28fne58kDAuULThS5Op0qEiZ0U8f5Dq3PjES6brhMA8faNoIu41Wg==",
+  "dgSpecHash": "AfEPIkq28mbtVh0P7xnICSr/Xn6UAzgiq4uzu/8ABGuB4emYY9epe0KUhC5r7Xp0ElgMATzPzyKGyGGlLtUR5g==",
   "success": true,
   "projectFilePath": "D:\\ONLINE SUBSCRIPTION\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
   "expectedPackageFiles": [
@@ -89,6 +89,8 @@
     "C:\\Users\\INSOFT\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\INSOFT\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\INSOFT\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\INSOFT\\.nuget\\packages\\ssh.net\\2023.0.0\\ssh.net.2023.0.0.nupkg.sha512",
+    "C:\\Users\\INSOFT\\.nuget\\packages\\sshnet.security.cryptography\\1.3.0\\sshnet.security.cryptography.1.3.0.nupkg.sha512",
     "C:\\Users\\INSOFT\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\INSOFT\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\INSOFT\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

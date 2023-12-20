@@ -5,6 +5,7 @@
         public  string  TokenNo { get; set; }
         public  string CompanyName { get; set; }
         public  int Module { get; set; }
+        public  int CustomerId { get; set; }
         public  string DisplayName { get; set; }
         public  string Initial { get; set; }
         public  string PanVatNo { get; set; }
@@ -15,7 +16,8 @@
         public  string OrganizationMotto { get; set; }
         public  string Website { get; set; }
         public  string ImageName { get; set; }
-        public  string ImageData { get; set; }
+        public  string ImageType { get; set; }
+        public string ImageData { get; set; }
         public  string Token { get; set; }
     }
 }
