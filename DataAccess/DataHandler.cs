@@ -12,7 +12,57 @@ namespace DataAccess
 {
     public class DataHandeler
     {
-        public string _connectionString = "Server=DESKTOP-Q33RBL2\\INSOFTDATA22; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";
+        //public string _connectionString = "Server=DESKTOP-Q33RBL2\\INSOFTDATA22; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";
+        public string _connectionString = "Server=202.51.74.37,1435; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";
+
+        public string ByToken(string TokenNo)
+        {
+            SqlConnection conn = new SqlConnection(this._connectionString);
+            try
+            {
+                string Schoolcode = TokenNo.Split("_")[1].ToString();
+
+                SqlParameter[] parm = {
+                    new SqlParameter("@Initial",Schoolcode)
+                };
+
+                string sql = "[Usp_S_SchoolDetails_ByInitialAndSchoolCode]";
+
+                SqlCommand cmd = new SqlCommand();
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = sql;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 0;
+                    if (parm != null)
+                    {
+                        cmd.Parameters.AddRange(parm);
+                    }
+                    conn.Open();
+                    IDataReader reader = cmd.ExecuteReader();
+                    DataTable ds = new DataTable();
+                    ds.Load(reader);
+
+                    string Connectionstring = "";
+                    if (ds.Rows.Count > 0)
+                    {
+                        Connectionstring = ds.Rows[0]["DataBaseLink"].ToString();
+                    }
+
+                    return Connectionstring;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         //---------------for Insert operation -----------------
         public int Insert(string sql, SqlParameter[] param, CommandType cmdType)
         {

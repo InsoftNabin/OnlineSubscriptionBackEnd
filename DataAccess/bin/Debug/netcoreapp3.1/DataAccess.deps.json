@@ -932,7 +932,10 @@
       "System.Threading.Tasks.Extensions/4.5.1": {},
       "DataProvider/1.0.0": {
         "runtime": {
-          "DataProvider.dll": {}
+          "DataProvider.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

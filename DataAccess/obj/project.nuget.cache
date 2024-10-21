@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zuGd3iKxrc4bquRiWuR46cTQOZP9L11wBfG30e6pd8mDV818VleXL9CjeIII9k+gZfnsk9jHWVvT0SkMwoBM4Q==",
+  "dgSpecHash": "adLHYeM7yKs=",
   "success": true,
-  "projectFilePath": "D:\\ONLINE SUBSCRIPTION\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
+  "projectFilePath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\INSOFT\\.nuget\\packages\\ikvm\\8.1.5717\\ikvm.8.1.5717.nupkg.sha512",
     "C:\\Users\\INSOFT\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
@@ -86,10 +86,7 @@
     "C:\\Users\\INSOFT\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
     "C:\\Users\\INSOFT\\.nuget\\packages\\system.threading\\4.0.11\\system.threading.4.0.11.nupkg.sha512",
     "C:\\Users\\INSOFT\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
-    "C:\\Users\\INSOFT\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.1\\system.threading.tasks.extensions.4.5.1.nupkg.sha512",
-    "C:\\Users\\INSOFT\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\INSOFT\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\INSOFT\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512"
+    "C:\\Users\\INSOFT\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.1\\system.threading.tasks.extensions.4.5.1.nupkg.sha512"
   ],
   "logs": [
     {
@@ -107,6 +104,16 @@
       "level": "Warning",
       "warningLevel": 1,
       "message": "Package 'System.Data.SqlClient' 4.8.2 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-8g2p-5pqh-5jmc",
+      "libraryId": "System.Data.SqlClient",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Data.SqlClient' 4.8.2 has a known high severity vulnerability, https://github.com/advisories/GHSA-98g6-xh36-x2p7",
       "libraryId": "System.Data.SqlClient",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.1"

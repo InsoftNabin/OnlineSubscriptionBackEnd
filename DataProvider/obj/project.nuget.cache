@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+CADW0h5RlBZEfbGBXbqlXDIqDguB7/LnnkEtpdylgfhsYjT2NUJafmU347uAlZH9oT4B1XIe+8Sz0HMeUxzDg==",
+  "dgSpecHash": "EJ91Vgy7yhc=",
   "success": true,
-  "projectFilePath": "D:\\ONLINE SUBSCRIPTION\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\INSOFT\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\INSOFT\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\INSOFT\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512"
-  ],
+  "projectFilePath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

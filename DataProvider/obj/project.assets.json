@@ -8,24 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\INSOFT\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\INSOFT\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ONLINE SUBSCRIPTION\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
+      "projectUniqueName": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
       "projectName": "DataProvider",
-      "projectPath": "D:\\ONLINE SUBSCRIPTION\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
+      "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
       "packagesPath": "C:\\Users\\INSOFT\\.nuget\\packages\\",
-      "outputPath": "D:\\ONLINE SUBSCRIPTION\\OnlineSubscriptionBackEnd\\DataProvider\\obj\\",
+      "outputPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\INSOFT\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -46,6 +41,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -62,26 +62,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.10, 3.1.10]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
