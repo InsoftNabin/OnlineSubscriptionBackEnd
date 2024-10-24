@@ -97,6 +97,23 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             }
         }
 
+        [HttpPost]
+        public ActionResult getProductByProductId([FromBody] SubProducts p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+
+                    new SqlParameter("@Id",p.Id)
+                };
+                string data = dh.ReadToJson("[Insoft_S_GetSubProductByProductId]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         [HttpPost]
         public ActionResult DeleteProduct([FromBody] SubProducts p)
