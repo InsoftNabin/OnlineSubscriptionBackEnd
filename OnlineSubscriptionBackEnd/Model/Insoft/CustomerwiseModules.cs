@@ -1,6 +1,4 @@
-﻿using java.sql;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace OnlineSubscriptionBackEnd.Model.Insoft
 {
@@ -12,15 +10,15 @@ namespace OnlineSubscriptionBackEnd.Model.Insoft
             public int CustomerId { get; set; }
             public int ProductId { get; set; }
             public int AgentId { get; set; }
-            public int SubProductId { get; set; }
-            public string JoinDate { get; set; }
-            public string LastRenewDate { get; set; }
-            public string ExpiryDate { get; set; }
+            //public int SubProductId { get; set; }
+            //public string JoinDate { get; set; }
+            //public string LastRenewDate { get; set; }
+            //public string ExpiryDate { get; set; }
             public string Initial { get; set; }
-            public float MonthlyCharge { get; set; }
+            //public float MonthlyCharge { get; set; }
             public string SerialNumber { get; set; }
             public string SiteURL { get; set; }
-            public string Remarks { get; set; }
+            //public string Remarks { get; set; }
 
 
             public List<SubProduct> subProducts { get; set; }
@@ -28,7 +26,8 @@ namespace OnlineSubscriptionBackEnd.Model.Insoft
 
         public class SubProduct
         {
-            public int ProductId { get; set; }
+        public int Id { get; set; }
+        public int ProductId { get; set; }
             public int SubProductId { get; set; }
             public string JoinDate { get; set; }
             public string LastRenewDate { get; set; }

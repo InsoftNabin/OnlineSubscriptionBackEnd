@@ -1,18 +1,4 @@
-﻿////using Microsoft.AspNetCore.Mvc;
-
-//namespace OnlineSubscriptionBackEnd.Controllers.Insoft
-//{
-//    public class CustomerwiseModulesSelectionController : Controller
-//    {
-//        public IActionResult Index()
-//        {
-//            return View();
-//        }
-//    }
-//}
-
-
-using DataAccess;
+﻿using DataAccess;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -36,34 +22,35 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
         {
             try
             {
-                int AffectedRows = 0;
-                //string conn = "";
-                //conn = dh.ByToken(ai.TokenNo);
-
-                SqlParameter[] parameters = {
-                new SqlParameter("@Id", ai.Id),
-                new SqlParameter("@TokenNo", ai.TokenNo),
-                new SqlParameter("@CustomerId", ai.CustomerId),
-                new SqlParameter("@ProductId", ai.ProductId),
-                new SqlParameter("@AgentId", ai.AgentId),
-                new SqlParameter("@SubProductId", ai.SubProductId),
-                new SqlParameter("@JoinDate", ai.JoinDate),
-                new SqlParameter("@LastRenewDate", ai.LastRenewDate),
-                new SqlParameter("@ExpiryDate", ai.ExpiryDate),
-                new SqlParameter("@Initial", ai.Initial),
-                new SqlParameter("@MonthlyCharge", ai.MonthlyCharge),
-                new SqlParameter("@SerialNumber", ai.SerialNumber),
-                new SqlParameter("@SiteURL", ai.SiteURL),
-                new SqlParameter("@Remarks", ai.Remarks)
-                };
-                AffectedRows = AffectedRows + dh.InsertUpdate("[Insoft_S_InsertUpdateCustomerwisemoduledetails]", parameters, CommandType.StoredProcedure);
-                return Json(AffectedRows);
+                int totalAffectedRows = 0;
+                foreach (var subProduct in ai.subProducts)
+                {
+                    SqlParameter[] parameters = {
+                        new SqlParameter("@Id", subProduct.Id),
+                        new SqlParameter("@TokenNo", ai.TokenNo),
+                        new SqlParameter("@CustomerId", ai.CustomerId),
+                        new SqlParameter("@ProductId", subProduct.ProductId),
+                        new SqlParameter("@AgentId", ai.AgentId),
+                        new SqlParameter("@SubProductId", subProduct.SubProductId),
+                        new SqlParameter("@JoinDate", subProduct.JoinDate),
+                        new SqlParameter("@LastRenewDate", subProduct.LastRenewDate),
+                        new SqlParameter("@ExpiryDate", subProduct.ExpiryDate),
+                        new SqlParameter("@Initial", ai.Initial),
+                        new SqlParameter("@MonthlyCharge", subProduct.MonthlyCharge),
+                        new SqlParameter("@SerialNumber", ai.SerialNumber),
+                        new SqlParameter("@SiteURL", ai.SiteURL),
+                        new SqlParameter("@Remarks", subProduct.Remarks)
+                 };
+                    totalAffectedRows += dh.InsertUpdate("[Insoft_S_InsertUpdateCustomerwisemoduledetails]", parameters, CommandType.StoredProcedure);
+                }
+                return Json(totalAffectedRows);
             }
             catch (Exception ex)
             {
-                throw ex;
+                return BadRequest(ex.Message);
             }
         }
+
         //[HttpPost]
         //public JsonResult InsertUpdate([FromBody] CustomerwiseModules ai )
         //{
@@ -71,7 +58,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
         //    {
         //        int totalAffectedRows = 0;
 
-            
+
         //            SqlParameter[] parameters = {
         //        new SqlParameter("@Id", ai.Id),
         //        new SqlParameter("@TokenNo", ai.TokenNo),
@@ -87,7 +74,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
         //        new SqlParameter("@SerialNumber", ai.SerialNumber),
         //        new SqlParameter("@SiteURL", ai.siteURL),
         //        new SqlParameter("@Remarks", ai.Remarks)
-       
+
 
         //            totalAffectedRows += dh.InsertUpdate("[Insoft_S_InsertUpdateCustomerwisemoduledetails]", parameters, CommandType.StoredProcedure);
         //        }
@@ -122,12 +109,14 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
         [HttpPost]
         public ActionResult getCustomerwiseModulesById([FromBody] CustomerwiseModules p)
-        {
+          {
             try
             {
                 SqlParameter[] parm = {
+                     new SqlParameter("@TokenNo", p.TokenNo),
+                    new SqlParameter("@CustomerId",p.CustomerId),
+                    new SqlParameter("@ProductId",p.ProductId)
 
-                    new SqlParameter("@Id",p.Id)
                 };
                 string data = dh.ReadToJson("[Insoft_S_GetCustomerwiseModulesById]", parm, CommandType.StoredProcedure);
                 return Ok(data);
