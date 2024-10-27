@@ -1,14 +1,9 @@
 ﻿using DataAccess;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 using System;
 using OnlineSubscriptionBackEnd.Model.Insoft;
-
-using Newtonsoft.Json.Linq;
-
 
 namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 {
