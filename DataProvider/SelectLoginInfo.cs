@@ -9,5 +9,7 @@ namespace DataProvider
         public int Status { get; set; }
         public string Message { get; set; }
         public string TokenNo { get; set; }
+        public string Type { get; set; }
+        public string landingPage { get; set; }
     }
 }

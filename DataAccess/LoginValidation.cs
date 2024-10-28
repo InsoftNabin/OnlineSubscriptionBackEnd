@@ -26,6 +26,9 @@ namespace DataAccess
                 sli.TokenNo = dt.Rows[0]["Token"].ToString();
                 sli.Status = Int32.Parse(dt.Rows[0]["StatusCode"].ToString());
                 sli.Message = dt.Rows[0]["Message"].ToString();
+                sli.Type= dt.Rows[0]["Type"].ToString();
+                sli.landingPage = dt.Rows[0]["landingPage"].ToString();
+
                 return sli;
             }
             catch (Exception ex)
