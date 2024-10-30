@@ -1,19 +1,4 @@
-﻿//using DataAccess;
-//using Microsoft.AspNetCore.Mvc;
-//using OnlineSubscriptionBackEnd.Model.Insoft;
-//using System.Data.SqlClient;
-//using System.Data;
-
-//namespace OnlineSubscriptionBackEnd.Controllers.Insoft
-//{
-//    public class CustomerPlanDetailsController : Controller
-//    {
-//        public IActionResult Index()
-//        {
-//            return View();
-//        }
-//    }
-//}
+﻿
 using DataAccess;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
@@ -57,7 +42,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
         }
  
         [HttpPost]
-        public ActionResult getCustomerPlanDetails([FromBody] CustomerPlan p)
+        public ActionResult getCurrentPlan([FromBody] CustomerPlan p)
         {
             try
             {
@@ -75,6 +60,29 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 throw ex;
             }
         }
+
+
+        [HttpPost]
+        public ActionResult getCustomerSelectedPlansOnly([FromBody] CustomerPlan p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+
+                    new SqlParameter("@CustomerId",p.CustomerId),
+                    new SqlParameter("@ProductId",p.ProductId)
+
+                };
+                string data = dh.ReadToJson("Insoft_S_CustomerselectedPlans", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
 
     }
 }

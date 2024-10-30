@@ -89,6 +89,29 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
 
         [HttpPost]
+        public ActionResult getSubscriptionLogByCustandprodId([FromBody] CustomerPlan p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+
+                    new SqlParameter("@ProductId",p.ProductId),
+                    new SqlParameter ("@CustomerId",p.CustomerId)
+
+                };
+                string data = dh.ReadToJson("[Insoft_S_GetSubscriptionLog]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
+        [HttpPost]
         public ActionResult getSubscriptionById([FromBody] Subscription p)
         {
             try

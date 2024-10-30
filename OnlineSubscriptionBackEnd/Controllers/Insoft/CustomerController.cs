@@ -119,7 +119,29 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 throw ex;
             }
         }
-     
+
+        [HttpPost]
+        public ActionResult getCustomerByAgentandProductId([FromBody] Customer p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+
+                    new SqlParameter("@Id",p.Id),
+                    new SqlParameter("@ProductId",p.ProductId)
+                };
+                string data = dh.ReadToJson("[Insoft_S_GetCustomerByAgentandProductId]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
         [HttpPost]
         public ActionResult getSubsbyCusandProductId([FromBody] CustomerwiseModules p)
         {
