@@ -314,3 +314,12 @@ D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBack
 D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\obj\Debug\netcoreapp3.1\OnlineSubscriptionBackEnd.dll
 D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\obj\Debug\netcoreapp3.1\OnlineSubscriptionBackEnd.pdb
 D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\obj\Debug\netcoreapp3.1\OnlineSubscriptionBackEnd.genruntimeconfig.cache
+D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\QRCoder.dll
+D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll

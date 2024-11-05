@@ -217,13 +217,17 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
             "SSH.NET": {
               "target": "Package",
               "version": "[2023.0.0, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
-              "version": "[4.8.2, )"
+              "version": "[4.8.6, )"
             },
             "iTextSharp": {
               "target": "Package",
