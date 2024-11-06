@@ -26,7 +26,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                         new SqlParameter("@customercode",ai.CustomerCode),
                         new SqlParameter("@customername",ai.CustomerName),
                         new SqlParameter("@address",ai.Address),
-                        new SqlParameter("@panvat",ai.panvatno),  
+                        new SqlParameter("@panvat",ai.panvatno),
                         new SqlParameter("@contact",ai.Contact),
                         new SqlParameter("@databaselink",ai.DataBaseLink),
                         new SqlParameter("@contactperson1",ai.ContactPerson1),
@@ -37,7 +37,8 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                         new SqlParameter("@website",ai.Website),
                         new SqlParameter("@GUID",ai.GUID),
                         new SqlParameter("@CompanyCode",ai.CompanyCode),
-                        new SqlParameter("@BySMSApiToken",ai.BySMSApiToken)
+                        new SqlParameter("@BySMSApiToken",ai.BySMSApiToken),
+                        //new SqlParameter("@AddedBy",ai.AddedBy)
                     };
                 AffectedRows = AffectedRows + dh.InsertUpdate("Insoft_IU_Customer", parm, CommandType.StoredProcedure);
                 return Json(AffectedRows);

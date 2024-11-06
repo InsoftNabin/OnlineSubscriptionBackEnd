@@ -28,7 +28,8 @@ namespace DataAccess
                 sli.Message = dt.Rows[0]["Message"].ToString();
                 sli.Type= dt.Rows[0]["Type"].ToString();
                 sli.landingPage = dt.Rows[0]["landingPage"].ToString();
-
+                //sli.Id = dt.Rows[0]["Id"].ToString();
+                sli.UserName = dt.Rows[0]["UserName"].ToString();
                 return sli;
             }
             catch (Exception ex)

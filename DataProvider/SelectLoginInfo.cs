@@ -11,5 +11,7 @@ namespace DataProvider
         public string TokenNo { get; set; }
         public string Type { get; set; }
         public string landingPage { get; set; }
+        public string UserName { get; set; }
+        public int Id { get; set; }
     }
 }
