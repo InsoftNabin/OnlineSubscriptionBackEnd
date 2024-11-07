@@ -26,3 +26,17 @@ D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\DataAccess\obj\Debug\n
 D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.Up2Date
 D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.dll
 D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.pdb
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.deps.json
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.dll
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.pdb
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\bin\Debug\netcoreapp3.1\DataProvider.dll
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\bin\Debug\netcoreapp3.1\DataProvider.pdb
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.AssemblyReference.cache
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfoInputs.cache
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfo.cs
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.CoreCompileInputs.cache
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.sourcelink.json
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.Up2Date
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.dll
+D:\online subs\OnlineSubscriptionBackEnd\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.pdb
