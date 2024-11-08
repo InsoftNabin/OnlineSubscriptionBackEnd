@@ -8545,19 +8545,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\guru\\.nuget\\packages\\": {}
+    "C:\\Users\\INSOFT\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\online subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
+      "projectUniqueName": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
       "projectName": "OnlineSubscriptionBackEnd",
-      "projectPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
-      "packagesPath": "C:\\Users\\guru\\.nuget\\packages\\",
-      "outputPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\obj\\",
+      "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
+      "packagesPath": "C:\\Users\\INSOFT\\.nuget\\packages\\",
+      "outputPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\guru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\INSOFT\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8572,11 +8572,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\online subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj"
+            "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj"
             },
-            "D:\\online subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
-              "projectPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj"
+            "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
+              "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj"
             }
           }
         }

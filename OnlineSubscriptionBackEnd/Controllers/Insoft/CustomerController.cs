@@ -50,6 +50,22 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
         }
 
 
+        [HttpPost]
+        public ActionResult getCountries([FromBody] string TokenNo)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@TokenNo",TokenNo)
+                };
+                string data = dh.ReadToJson("[Insoft_S_GetAllCountries]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         [HttpPost]
         public ActionResult getCustomers([FromBody] string TokenNo)
