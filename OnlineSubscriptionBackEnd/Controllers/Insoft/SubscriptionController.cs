@@ -90,6 +90,47 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
 
         [HttpPost]
+        public ActionResult getVouchersForVerification([FromBody] string TokenNo)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@TokenNo",TokenNo)
+                };
+                string data = dh.ReadToJson("[Insoft_S_GetAllVouchersForVerification]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+        [HttpPost]
+        public ActionResult VerifyorRejectSubscription([FromBody] CustomerPlan p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+
+                    new SqlParameter("@ukid",p.ProductId),
+                    new SqlParameter ("@IsVerifiedPayment",p.CustomerId),
+                    new SqlParameter("@Remarks",p.Remarks)
+
+                };
+                string data = dh.ReadToJson("[Insoft_IU_SubVerification]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        [HttpPost]
         public ActionResult getSubscriptionLogByCustandprodId([FromBody] CustomerPlan p)
         {
             try
