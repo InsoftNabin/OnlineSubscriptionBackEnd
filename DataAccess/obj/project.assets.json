@@ -4323,19 +4323,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\guru\\.nuget\\packages\\": {}
+    "C:\\Users\\INSOFT\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
-      "packagesPath": "C:\\Users\\guru\\.nuget\\packages\\",
-      "outputPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataAccess\\obj\\",
+      "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
+      "packagesPath": "C:\\Users\\INSOFT\\.nuget\\packages\\",
+      "outputPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\guru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\INSOFT\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4350,8 +4350,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\online subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
-              "projectPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj"
+            "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
+              "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj"
             }
           }
         }
