@@ -143,6 +143,23 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             }
         }
         [HttpPost]
+        public ActionResult getCustSubsc([FromBody] Customer p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+
+                    new SqlParameter("@Id",p.Id)
+                };
+                string data = dh.ReadToJson("[Insoft_S_GetCustomerSubs]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        [HttpPost]
         public ActionResult getCustomerByAgentId([FromBody] Customer p)
         {
             try

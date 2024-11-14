@@ -2,6 +2,7 @@
 {
     public class CustomerPlan
     {
+        public int fonepayTraceId { get; set; }
         public int CustomerId { get; set; }
         public int ProductId { get; set; }
         public string ExpiryDate { get; set; }

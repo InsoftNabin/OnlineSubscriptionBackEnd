@@ -32,7 +32,8 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                         new SqlParameter("@GeneratedSerialNo",ai.GeneratedSerialNo),
                         new SqlParameter("@SubscriptionType",ai.SubscriptionType),
                         new SqlParameter("@VoucherImage",ai.VoucherImage),
-                        new SqlParameter("@IsVerifiedPayment",ai.IsVerifiedPayment)
+                        new SqlParameter("@IsVerifiedPayment",ai.IsVerifiedPayment),
+                        new SqlParameter("@fonepayTraceId",ai.fonepayTraceId)
                     };
                 AffectedRows = AffectedRows + dh.InsertUpdate("[Insoft_IU_CustomerPlanDetails]", parm, CommandType.StoredProcedure);
                 return Json(AffectedRows);

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnlineSubscriptionBackEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e73bd3b87eed38dc067fcf95c5accb727eac4693")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14b96b2a8379b507a9b664785fb83ddda76343de")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnlineSubscriptionBackEnd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnlineSubscriptionBackEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
