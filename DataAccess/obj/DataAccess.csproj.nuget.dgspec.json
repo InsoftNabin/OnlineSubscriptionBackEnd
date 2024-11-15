@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj": {}
+    "D:\\online subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj": {}
   },
   "projects": {
-    "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj": {
+    "D:\\online subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\INSOFT\\.nuget\\packages\\",
-        "outputPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\obj\\",
+        "projectPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
+        "packagesPath": "C:\\Users\\guru\\.nuget\\packages\\",
+        "outputPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\INSOFT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\guru\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +22,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
-                "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj"
+              "D:\\online subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
+                "projectPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj"
               }
             }
           }
@@ -94,21 +95,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
+    "D:\\online subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
+        "projectUniqueName": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
         "projectName": "DataProvider",
-        "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
-        "packagesPath": "C:\\Users\\INSOFT\\.nuget\\packages\\",
-        "outputPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\obj\\",
+        "projectPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
+        "packagesPath": "C:\\Users\\guru\\.nuget\\packages\\",
+        "outputPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataProvider\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\INSOFT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\guru\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -116,6 +117,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -154,7 +156,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
