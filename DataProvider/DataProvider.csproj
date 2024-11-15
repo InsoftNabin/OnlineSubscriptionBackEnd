@@ -12,4 +12,8 @@
 	  <None Include="D:\ONLINE SUBSCRIPTION\OnlineSubscriptionBackEnd\DataProvider\.editorconfig" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="SSH.NET" Version="2024.2.0" />
+	</ItemGroup>
+
 </Project>
