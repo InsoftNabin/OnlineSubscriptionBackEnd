@@ -8592,19 +8592,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\guru\\.nuget\\packages\\": {}
+    "C:\\Users\\INSOFT\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\online subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
+      "projectUniqueName": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
       "projectName": "OnlineSubscriptionBackEnd",
-      "projectPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
-      "packagesPath": "C:\\Users\\guru\\.nuget\\packages\\",
-      "outputPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\obj\\",
+      "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
+      "packagesPath": "C:\\Users\\INSOFT\\.nuget\\packages\\",
+      "outputPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\guru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\INSOFT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8612,18 +8617,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\online subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj"
+            "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj"
             },
-            "D:\\online subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
-              "projectPath": "D:\\online subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj"
+            "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
+              "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj"
             }
           }
         }
@@ -8636,8 +8640,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
-      }
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "netcoreapp3.1": {
@@ -8687,11 +8692,71 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   },
   "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BouncyCastle' 1.8.9 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-8xfc-gm6g-vgpv",
+      "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BouncyCastle' 1.8.9 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-m44j-cfrm-g8qc",
+      "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BouncyCastle' 1.8.9 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-v435-xc8x-wvr9",
+      "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Net.Http' 4.3.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-7jgj-8wvc-jh57",
+      "libraryId": "System.Net.Http",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1904",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Text.Encodings.Web' 4.5.0 has a known critical severity vulnerability, https://github.com/advisories/GHSA-ghhp-997w-qr28",
+      "libraryId": "System.Text.Encodings.Web",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Text.RegularExpressions' 4.3.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-cmhx-cq75-c4mj",
+      "libraryId": "System.Text.RegularExpressions",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
     {
       "code": "NU1701",
       "level": "Warning",

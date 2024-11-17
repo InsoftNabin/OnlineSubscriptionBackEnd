@@ -228,7 +228,8 @@ namespace OnlineSubscriptionBackEnd.Controllers
             {
                 SqlParameter[] parm = {
                     new SqlParameter("@TokenNo", OD.TokenNo),
-                    new SqlParameter("@Id", OD.Token)
+                    new SqlParameter("@Id", OD.Token),
+                    new SqlParameter("@Remarks",OD.Remarks)
                 };
                 int Block = dh.Update("Usp_D_Orgdetails", parm, CommandType.StoredProcedure);
                 return Json(Block);
