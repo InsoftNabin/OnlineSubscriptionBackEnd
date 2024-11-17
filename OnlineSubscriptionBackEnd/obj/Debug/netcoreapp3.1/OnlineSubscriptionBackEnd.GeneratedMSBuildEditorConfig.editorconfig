@@ -1,8 +1,5 @@
 is_global = true
 build_property.RootNamespace = OnlineSubscriptionBackEnd
-build_property.ProjectDir = D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\
+build_property.ProjectDir = D:\online subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
-build_property.CsWinRTUseWindowsUIXamlProjections = false
-build_property.EffectiveAnalysisLevelStyle = 
-build_property.EnableCodeStyleSeverity = 

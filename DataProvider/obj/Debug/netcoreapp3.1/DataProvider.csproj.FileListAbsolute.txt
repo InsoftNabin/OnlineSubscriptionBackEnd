@@ -29,3 +29,4 @@ D:\online subs\OnlineSubscriptionBackEnd\DataProvider\obj\Debug\netcoreapp3.1\Da
 D:\online subs\OnlineSubscriptionBackEnd\DataProvider\obj\Debug\netcoreapp3.1\DataProvider.dll
 D:\online subs\OnlineSubscriptionBackEnd\DataProvider\obj\Debug\netcoreapp3.1\DataProvider.pdb
 D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\DataProvider\obj\Debug\netcoreapp3.1\DataProvider.csproj.AssemblyReference.cache
+D:\online subs\OnlineSubscriptionBackEnd\DataProvider\obj\Debug\netcoreapp3.1\DataProvider.csproj.AssemblyReference.cache

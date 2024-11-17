@@ -393,7 +393,6 @@ D:\online subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\net
 D:\online subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
 D:\online subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\QRCoder.dll
 D:\online subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
-D:\online subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
 D:\online subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 D:\online subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
 D:\online subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
@@ -491,3 +490,5 @@ D:\online subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\obj\Debug\net
 D:\online subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\obj\Debug\netcoreapp3.1\OnlineSubscriptionBackEnd.genruntimeconfig.cache
 D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\BouncyCastle.Cryptography.dll
 D:\Insoft Work-guru\Online Subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\System.Formats.Asn1.dll
+D:\online subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\BouncyCastle.Cryptography.dll
+D:\online subs\OnlineSubscriptionBackEnd\OnlineSubscriptionBackEnd\bin\Debug\netcoreapp3.1\System.Formats.Asn1.dll
