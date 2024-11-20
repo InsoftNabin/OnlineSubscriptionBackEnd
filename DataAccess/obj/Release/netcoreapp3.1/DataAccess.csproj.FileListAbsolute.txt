@@ -1,0 +1,14 @@
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\bin\Release\netcoreapp3.1\DataAccess.deps.json
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\bin\Release\netcoreapp3.1\DataAccess.dll
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\bin\Release\netcoreapp3.1\DataAccess.pdb
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\bin\Release\netcoreapp3.1\DataProvider.dll
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\bin\Release\netcoreapp3.1\DataProvider.pdb
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\obj\Release\netcoreapp3.1\DataAccess.csproj.AssemblyReference.cache
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\obj\Release\netcoreapp3.1\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\obj\Release\netcoreapp3.1\DataAccess.AssemblyInfoInputs.cache
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\obj\Release\netcoreapp3.1\DataAccess.AssemblyInfo.cs
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\obj\Release\netcoreapp3.1\DataAccess.csproj.CoreCompileInputs.cache
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\obj\Release\netcoreapp3.1\DataAccess.sourcelink.json
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\obj\Release\netcoreapp3.1\DataAccess.csproj.Up2Date
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\obj\Release\netcoreapp3.1\DataAccess.dll
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataAccess\obj\Release\netcoreapp3.1\DataAccess.pdb

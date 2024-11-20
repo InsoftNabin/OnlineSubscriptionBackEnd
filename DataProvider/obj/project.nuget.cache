@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VCZ+t3OxLN4=",
+  "dgSpecHash": "KCRdLOMAHJg=",
   "success": true,
-  "projectFilePath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
+  "projectFilePath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\INSOFT\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
     "C:\\Users\\INSOFT\\.nuget\\packages\\ssh.net\\2024.2.0\\ssh.net.2024.2.0.nupkg.sha512",

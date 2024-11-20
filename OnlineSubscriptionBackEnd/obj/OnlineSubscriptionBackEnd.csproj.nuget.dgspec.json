@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj": {}
+    "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj": {}
   },
   "projects": {
-    "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj": {
+    "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
+        "projectPath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
         "packagesPath": "C:\\Users\\INSOFT\\.nuget\\packages\\",
-        "outputPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\obj\\",
+        "outputPath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
-                "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj"
+              "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
+                "projectPath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj"
               }
             }
           }
@@ -107,14 +107,14 @@
         }
       }
     },
-    "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
+    "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
+        "projectUniqueName": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
         "projectName": "DataProvider",
-        "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
+        "projectPath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
         "packagesPath": "C:\\Users\\INSOFT\\.nuget\\packages\\",
-        "outputPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\obj\\",
+        "outputPath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -178,14 +178,14 @@
         }
       }
     },
-    "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj": {
+    "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
+        "projectUniqueName": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
         "projectName": "OnlineSubscriptionBackEnd",
-        "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
+        "projectPath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
         "packagesPath": "C:\\Users\\INSOFT\\.nuget\\packages\\",
-        "outputPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\obj\\",
+        "outputPath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -206,11 +206,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj"
+              "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj"
               },
-              "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
-                "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj"
+              "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
+                "projectPath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj"
               }
             }
           }

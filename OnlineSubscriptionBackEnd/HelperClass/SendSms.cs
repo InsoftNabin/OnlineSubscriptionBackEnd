@@ -42,7 +42,7 @@ namespace OnlineSubscriptionBackEnd.HelperClass
                 string responcebody = await res.Content.ReadAsStringAsync();
                 ResponceMessage rm = JsonConvert.DeserializeObject<ResponceMessage>(responcebody);
 
-                if (rm.response_code == 200)
+                if (responcebody != null && rm.response_code == 200)
                 {
                     string result = "Success";
                     return result;

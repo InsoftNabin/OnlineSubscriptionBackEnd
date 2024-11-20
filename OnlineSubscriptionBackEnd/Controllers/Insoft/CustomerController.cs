@@ -69,7 +69,24 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 throw ex;
             }
         }
-
+        [HttpPost]
+        public ActionResult getSubsbyCusandProductIdWithUnpaidTypeforAgent([FromBody] CustomerwiseModules p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    //new SqlParameter("@Id",p.Id),
+                    new SqlParameter("@ProductId",p.ProductId),
+                    new SqlParameter("@CustomerId",p.CustomerId),
+                };
+                string data = dh.ReadToJson("[Agent_S_CustomerandProductSubscriptionTypeWithUnpaidType]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
 
@@ -187,7 +204,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                     new SqlParameter("@Id",p.Id),
                     new SqlParameter("@ProductId",p.ProductId)
                 };
-                string data = dh.ReadToJson("[Insoft_S_GetCustomerByAgentandProductId]", parm, CommandType.StoredProcedure);
+                string data = dh.ReadToJson("[Agent_S_GetCustomerByProductId]", parm, CommandType.StoredProcedure);
                 return Ok(data);
             }
             catch (Exception ex)

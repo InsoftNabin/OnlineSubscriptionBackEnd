@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oYKdCciQ4UE=",
+  "dgSpecHash": "v+5auzAQro8=",
   "success": true,
-  "projectFilePath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
+  "projectFilePath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\INSOFT\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
     "C:\\Users\\INSOFT\\.nuget\\packages\\ikvm\\8.1.5717\\ikvm.8.1.5717.nupkg.sha512",

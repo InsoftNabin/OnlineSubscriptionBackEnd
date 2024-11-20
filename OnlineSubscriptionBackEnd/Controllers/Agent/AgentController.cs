@@ -75,7 +75,27 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             }
         }
 
-      
+
+        [HttpPost]
+        public ActionResult getAgentByToken([FromBody] Agent p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+
+                    new SqlParameter("@Id",p.Id)
+                };
+                string data = dh.ReadToJson("[Agent_getIdFromToken]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
         [HttpPost]
         public ActionResult getAgents([FromBody] string TokenNo)
         {

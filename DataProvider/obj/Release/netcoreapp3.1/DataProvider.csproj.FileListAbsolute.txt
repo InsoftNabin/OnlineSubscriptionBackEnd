@@ -1,0 +1,11 @@
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataProvider\bin\Release\netcoreapp3.1\DataProvider.deps.json
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataProvider\bin\Release\netcoreapp3.1\DataProvider.dll
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataProvider\bin\Release\netcoreapp3.1\DataProvider.pdb
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataProvider\obj\Release\netcoreapp3.1\DataProvider.csproj.AssemblyReference.cache
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataProvider\obj\Release\netcoreapp3.1\DataProvider.GeneratedMSBuildEditorConfig.editorconfig
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataProvider\obj\Release\netcoreapp3.1\DataProvider.AssemblyInfoInputs.cache
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataProvider\obj\Release\netcoreapp3.1\DataProvider.AssemblyInfo.cs
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataProvider\obj\Release\netcoreapp3.1\DataProvider.csproj.CoreCompileInputs.cache
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataProvider\obj\Release\netcoreapp3.1\DataProvider.sourcelink.json
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataProvider\obj\Release\netcoreapp3.1\DataProvider.dll
+D:\Insoft Work-guru\OnlineSubs\OnlineSubscriptionBackEnd\DataProvider\obj\Release\netcoreapp3.1\DataProvider.pdb

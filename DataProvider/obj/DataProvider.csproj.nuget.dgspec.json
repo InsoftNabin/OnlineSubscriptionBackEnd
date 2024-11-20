@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {}
+    "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {}
   },
   "projects": {
-    "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
+    "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
+        "projectUniqueName": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
         "projectName": "DataProvider",
-        "projectPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
+        "projectPath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\DataProvider.csproj",
         "packagesPath": "C:\\Users\\INSOFT\\.nuget\\packages\\",
-        "outputPath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\DataProvider\\obj\\",
+        "outputPath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\DataProvider\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

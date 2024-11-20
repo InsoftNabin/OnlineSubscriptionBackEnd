@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UD0iJ1rQGCc=",
+  "dgSpecHash": "jDcu7u9K0JE=",
   "success": true,
-  "projectFilePath": "D:\\Insoft Work-guru\\Online Subs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
+  "projectFilePath": "D:\\Insoft Work-guru\\OnlineSubs\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd\\OnlineSubscriptionBackEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\INSOFT\\.nuget\\packages\\bouncycastle\\1.8.9\\bouncycastle.1.8.9.nupkg.sha512",
     "C:\\Users\\INSOFT\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
