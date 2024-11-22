@@ -52,6 +52,41 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
 
         [HttpPost]
+        public ActionResult getAgentIdwithToken([FromBody] string tokenNo)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@Token",tokenNo)
+                };
+                string data = dh.ReadToJson("[Agent_getIdFromToken]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult getAllCustomergetAgentIdwithTokenwiseModules([FromBody] string TokenNo)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@TokenNo",TokenNo)
+                };
+                string data = dh.ReadToJson("[Agent_getIdFromToken]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
         public ActionResult getSubsbyCusandProductIdWithUnpaidType([FromBody] CustomerwiseModules p)
         {
             try

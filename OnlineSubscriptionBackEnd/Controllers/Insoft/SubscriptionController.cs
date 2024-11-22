@@ -219,12 +219,13 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 {
                     if (student[0].Status == "200")
                     {
-
                         ResponceModel rm = new ResponceModel
                         {
-                            message = student[0].Message,
-                            status = Int32.Parse(student[0].Status),
-                            data = student
+                            //data = student
+                            Status = student[0].Status,
+                            Message = student[0].Message,
+                            ExpireDate = student[0].ExpireDate,
+                            RemainingDays = student[0].RemainingDays
                         };
                         return StatusCode(StatusCodes.Status200OK, rm);
                     }
@@ -232,10 +233,12 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                     {
                         ResponceModel rm = new ResponceModel
                         {
-                            message = student[0].Message,
-                            status = Int32.Parse(student[0].Status),
-                            data = student
+                            Status = student[0].Status,
+                            Message = student[0].Message,
+                            ExpireDate = student[0].ExpireDate,
+                            RemainingDays = student[0].RemainingDays
                         };
+
                         return StatusCode(StatusCodes.Status200OK, rm);
                     }
                 }
@@ -251,8 +254,8 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             catch (Exception ex)
             {
                 ResponceModel rm = new ResponceModel();
-                rm.status = 417;
-                rm.message = ex.ToString();
+                rm.Status = "417";
+                rm.Message = ex.ToString();
                 return StatusCode(StatusCodes.Status417ExpectationFailed, rm);
             }
         }
