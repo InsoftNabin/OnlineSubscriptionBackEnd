@@ -14,6 +14,7 @@
         public string Message { get; set; }
         public string ExpireDate { get; set; }
         public string RemainingDays { get; set; }
+        public  string  LandingPage { get; set; }
 
     }
 }

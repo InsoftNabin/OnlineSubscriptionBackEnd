@@ -13,5 +13,7 @@ namespace DataProvider
         public string landingPage { get; set; }
         public string UserName { get; set; }
         public int Id { get; set; }
+        public int Product { get; set; }
+        public int Customer { get; set; }
     }
 }

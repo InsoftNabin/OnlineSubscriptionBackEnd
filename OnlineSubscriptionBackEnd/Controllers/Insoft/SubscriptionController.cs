@@ -225,7 +225,8 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                             Status = student[0].Status,
                             Message = student[0].Message,
                             ExpireDate = student[0].ExpireDate,
-                            RemainingDays = student[0].RemainingDays
+                            RemainingDays = student[0].RemainingDays,
+                            LandingPage= student[0].LandingPage
                         };
                         return StatusCode(StatusCodes.Status200OK, rm);
                     }
@@ -236,7 +237,8 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                             Status = student[0].Status,
                             Message = student[0].Message,
                             ExpireDate = student[0].ExpireDate,
-                            RemainingDays = student[0].RemainingDays
+                            RemainingDays = student[0].RemainingDays,
+                            LandingPage = student[0].LandingPage
                         };
 
                         return StatusCode(StatusCodes.Status200OK, rm);
