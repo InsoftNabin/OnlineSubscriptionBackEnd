@@ -41,7 +41,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                         new SqlParameter("@SiteURL", ai.SiteURL),
                         new SqlParameter("@Remarks", subProduct.Remarks)
                  };
-                    totalAffectedRows += dh.InsertUpdate("[Insoft_S_InsertUpdateCustomerwisemoduledetails]", parameters, CommandType.StoredProcedure);
+                    totalAffectedRows += dh.InsertUpdate("[Insoft_IU_InsertUpdateCustomerwisemoduledetails]", parameters, CommandType.StoredProcedure);
                 }
                 return Json(totalAffectedRows);
             }
