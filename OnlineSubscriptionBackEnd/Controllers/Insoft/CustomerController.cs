@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System;
 using OnlineSubscriptionBackEnd.Model.Insoft;
+using OnlineSubscriptionBackEnd.Model;
 
 namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 {
@@ -159,6 +160,23 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             }
         }
 
+
+        [HttpPost]
+        public ActionResult getInvoiceForPrint([FromBody] InvoiceData id)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@Ukid",id.unqId)
+                };
+                string data = dh.ReadToJson("[Customer_S_LogForPrint]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         [HttpPost]
         public ActionResult getCustomerById([FromBody] Customer p)
