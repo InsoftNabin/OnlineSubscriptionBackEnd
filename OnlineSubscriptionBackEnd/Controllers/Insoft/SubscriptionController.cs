@@ -120,7 +120,8 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
                     new SqlParameter("@ukid",p.ProductId),
                     new SqlParameter ("@IsVerifiedPayment",p.CustomerId),
-                    new SqlParameter("@Remarks",p.Remarks)
+                    new SqlParameter("@Remarks",p.Remarks),
+                    new SqlParameter("@ActualExpiryDate",p.ActualExpiryDate)
 
                 };
                 string data = dh.ReadToJson("[Insoft_IU_SubVerification]", parm, CommandType.StoredProcedure);
