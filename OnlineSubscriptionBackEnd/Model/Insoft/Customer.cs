@@ -3,6 +3,7 @@
     public class Customer
     {
         public int Id { get; set; }
+        public  string CustomerKey { get; set; }
         public string AddedBy { get; set; }
         public string TokenNo { get; set; }
         public string CustomerName { get; set; }
