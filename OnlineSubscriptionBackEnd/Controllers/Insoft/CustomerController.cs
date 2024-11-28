@@ -167,7 +167,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             try
             {
                 SqlParameter[] parm = {
-                    new SqlParameter("@Ukid",id.unqId)
+                    new SqlParameter("@Ukid",id.unqId) 
                 };
                 string data = dh.ReadToJson("[Customer_S_LogForPrint]", parm, CommandType.StoredProcedure);
                 return Ok(data);
