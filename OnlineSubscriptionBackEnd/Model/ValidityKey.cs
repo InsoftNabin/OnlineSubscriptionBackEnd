@@ -9,4 +9,8 @@ namespace OnlineSubscriptionBackEnd.Model
         public string ClientKey { get; set; }
         public DateTime ExpirationDate { get; set; }
     }
+    public class DecryptKey
+    {
+        public string validityKey { get; set; }
+    }
 }
