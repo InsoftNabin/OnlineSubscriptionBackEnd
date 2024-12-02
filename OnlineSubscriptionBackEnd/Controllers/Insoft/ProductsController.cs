@@ -78,8 +78,30 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 throw ex;
             }
         }
-       
-        
+
+
+
+        [HttpPost]
+        public ActionResult GetAllProductsByCustomer([FromBody] CustomerwiseModules p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+
+                    new SqlParameter("@TokenNo",p.TokenNo),
+                    new SqlParameter("@CustomerCode",p.CustomerId)
+                };
+                string data = dh.ReadToJson("[Insoft_S_GetAllProductsByCustomer]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
         [HttpPost]
         public ActionResult DeleteProduct([FromBody] Products p)
         {

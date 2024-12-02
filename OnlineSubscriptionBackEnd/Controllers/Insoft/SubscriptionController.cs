@@ -66,11 +66,35 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             }
             catch (Exception ex)
             {
-                // Consider logging the exception instead of throwing it
+               
                 return Json(new { success = false, message = ex.Message });
             }
         }
 
+        [HttpPost]
+        public JsonResult SubsbyCustProdandTypeInitially([FromBody] CustomerwiseModules item)
+        {
+            try
+            {
+                int affectedRows = 0;
+
+               
+                SqlParameter[] parm = {
+            new SqlParameter("@CustomerId", item.CustomerId),
+            new SqlParameter("@ProductId", item.ProductId),
+            new SqlParameter("@SubscriptionType", item.AgentId),
+            new SqlParameter("@Active", item.Active)
+        };
+
+                
+                affectedRows = dh.InsertUpdate("[Insoft_IU_CustomerandProductSubscriptionTypeInitial]", parm, CommandType.StoredProcedure);
+                return Json(new { success = true, affectedRows });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
 
 
 
