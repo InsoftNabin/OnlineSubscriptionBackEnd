@@ -198,6 +198,30 @@ namespace OnlineSubscriptionBackEnd.Controllers
             }
         }
 
+
+
+        [HttpPost]
+        public JsonResult getCusProdIdByToken([FromBody] UpdateOrg OD)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@TokenNo", OD.TokenNo),
+                    new SqlParameter("@Id", OD.Token)
+                };
+                string Block = dh.ReadToJson("Usp_S_CUSTOMERPRoductbyToken", parm, CommandType.StoredProcedure);
+                return Json(Block);
+               
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
         [HttpPost]
         public JsonResult UpdateOrgdetailsByAdmin([FromBody] UpdateOrg OD)
         {
