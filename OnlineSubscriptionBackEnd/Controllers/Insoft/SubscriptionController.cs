@@ -222,70 +222,171 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
 
 
+        //[HttpPost]
+        //public IActionResult ValidateSubscription([FromBody] ApiRequest ar /*string TokenNo,int Program,int Semester,int Sec,string SubjectCode, int TermId*/)
+        //{
+        //    try
+        //    {
+        //        if (ar.validityKey!=null)
+        //        {
+        //            GenerateKeyController gk = new GenerateKeyController();
+
+
+        //        }
+        //        else
+        //        {
+        //            StringBuilder Sb = new StringBuilder();
+        //            var jsonstring = "";
+        //            DataTable dt = new DataTable();
+
+        //            SqlParameter[] parm =
+        //            {
+        //            new SqlParameter("@CustomerId",ar.CustomerId),
+        //            new SqlParameter("@ProductId",ar.ProductId)
+        //        };
+
+        //            string data = dh.ReadToJson("[Insoft_S_ValidateSubscription]", parm, CommandType.StoredProcedure);
+
+        //            List<SubscriptionResponse> student = JsonConvert.DeserializeObject<List<SubscriptionResponse>>(data);
+        //            if (student.Count > 0)
+        //            {
+        //                if (student[0].Status == "200")
+        //                {
+        //                    ResponceModel rm = new ResponceModel
+        //                    {
+        //                        //data = student
+        //                        Status = student[0].Status,
+        //                        Message = student[0].Message,
+        //                        ExpireDate = student[0].ExpireDate,
+        //                        RemainingDays = student[0].RemainingDays,
+        //                        LandingPage = student[0].LandingPage
+        //                    };
+        //                    return StatusCode(StatusCodes.Status200OK, rm);
+        //                }
+        //                else
+        //                {
+        //                    ResponceModel rm = new ResponceModel
+        //                    {
+        //                        Status = student[0].Status,
+        //                        Message = student[0].Message,
+        //                        ExpireDate = student[0].ExpireDate,
+        //                        RemainingDays = student[0].RemainingDays,
+        //                        LandingPage = student[0].LandingPage
+        //                    };
+
+        //                    return StatusCode(StatusCodes.Status200OK, rm);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                Sb.Append("{\"status\":404,\"message\":\"Data not found\"}");
+        //                jsonstring = Sb.ToString();
+        //                JObject myObj = (JObject)JsonConvert.DeserializeObject(jsonstring);
+        //                //return Json(myObj);
+        //                return StatusCode(StatusCodes.Status404NotFound, myObj);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ResponceModel rm = new ResponceModel();
+        //        rm.Status = "417";
+        //        rm.Message = ex.ToString();
+        //        return StatusCode(StatusCodes.Status417ExpectationFailed, rm);
+        //    }
+        //}
+
+
         [HttpPost]
-        public IActionResult ValidateSubscription([FromBody] ApiRequest ar /*string TokenNo,int Program,int Semester,int Sec,string SubjectCode, int TermId*/)
+        public IActionResult ValidateSubscription([FromBody] ApiRequest ar)
         {
             try
             {
-                StringBuilder Sb = new StringBuilder();
-                var jsonstring = "";
-                DataTable dt = new DataTable();
-
-                SqlParameter[] parm =
+                if (!string.IsNullOrEmpty(ar.validityKey))
                 {
-                    new SqlParameter("@CustomerId",ar.CustomerId),
-                    new SqlParameter("@ProductId",ar.ProductId)
-                };
+                    GenerateKeyController gk = new GenerateKeyController();
+                    var actionResult = gk.DecryptValidityKey(new DecryptKey { validityKey = ar.validityKey });
 
+                    if (actionResult is OkObjectResult okResult && okResult.Value != null)
+                    {
+                        var decodedData = okResult.Value;
+                        var vk = JsonConvert.DeserializeObject<ValidityKey>(JsonConvert.SerializeObject(decodedData));
+
+                        SqlParameter[] parm =
+                        {
+                             new SqlParameter("@CustomerId",vk.ProductKey ),
+                             new SqlParameter("@ProductId", vk.ClientKey),
+                             new SqlParameter("@UniqueMachineKey", ar.UniqueMachineCode)
+                        };
+
+                        return FetchSubscriptionDetails(parm);
+                    }
+                    else
+                    {
+                        return BadRequest(new { Status = "400", Message = "Failed to decode validity key." });
+                    }
+                }
+                else
+                {
+                    
+                    SqlParameter[] parm =
+                    {
+                        new SqlParameter("@CustomerId", ar.CustomerId),
+                        new SqlParameter("@ProductId", ar.ProductId),
+                        new SqlParameter("@UniqueMachineKey", ar.UniqueMachineCode)
+
+                    };
+
+                    return FetchSubscriptionDetails(parm);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status417ExpectationFailed, new ResponceModel
+                {
+                    Status = "417",
+                    Message = ex.Message
+                });
+            }
+        }
+
+        private IActionResult FetchSubscriptionDetails(SqlParameter[] parm)
+        {
+            try
+            {
                 string data = dh.ReadToJson("[Insoft_S_ValidateSubscription]", parm, CommandType.StoredProcedure);
 
                 List<SubscriptionResponse> student = JsonConvert.DeserializeObject<List<SubscriptionResponse>>(data);
                 if (student.Count > 0)
                 {
-                    if (student[0].Status == "200")
+                    var subscription = student[0];
+                    ResponceModel rm = new ResponceModel
                     {
-                        ResponceModel rm = new ResponceModel
-                        {
-                            //data = student
-                            Status = student[0].Status,
-                            Message = student[0].Message,
-                            ExpireDate = student[0].ExpireDate,
-                            RemainingDays = student[0].RemainingDays,
-                            LandingPage= student[0].LandingPage
-                        };
-                        return StatusCode(StatusCodes.Status200OK, rm);
-                    }
-                    else
-                    {
-                        ResponceModel rm = new ResponceModel
-                        {
-                            Status = student[0].Status,
-                            Message = student[0].Message,
-                            ExpireDate = student[0].ExpireDate,
-                            RemainingDays = student[0].RemainingDays,
-                            LandingPage = student[0].LandingPage
-                        };
+                        Status = subscription.Status,
+                        Message = subscription.Message,
+                        ExpireDate = subscription.ExpireDate,
+                        RemainingDays = subscription.RemainingDays,
+                        LandingPage = subscription.LandingPage
+                    };
 
-                        return StatusCode(StatusCodes.Status200OK, rm);
-                    }
+                    return StatusCode(StatusCodes.Status200OK, rm);
                 }
                 else
                 {
-                    Sb.Append("{\"status\":404,\"message\":\"Data not found\"}");
-                    jsonstring = Sb.ToString();
-                    JObject myObj = (JObject)JsonConvert.DeserializeObject(jsonstring);
-                    //return Json(myObj);
-                    return StatusCode(StatusCodes.Status404NotFound, myObj);
+                    return NotFound(new { Status = "404", Message = "Data not found." });
                 }
             }
             catch (Exception ex)
             {
-                ResponceModel rm = new ResponceModel();
-                rm.Status = "417";
-                rm.Message = ex.ToString();
-                return StatusCode(StatusCodes.Status417ExpectationFailed, rm);
+                return StatusCode(StatusCodes.Status500InternalServerError, new { Message = "Failed to fetch subscription details.", Error = ex.Message });
             }
         }
+
+
+
+
+
+
 
     }
 }

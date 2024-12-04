@@ -48,29 +48,6 @@ namespace DataAccess
 
 
 
-        public bool saveSecret(SelectLoginInfo lv)
-        {
-            try
-            {
-                SqlParameter[] parm = {
-                    new SqlParameter("@TokenNo",lv.TokenNo),
-                    new SqlParameter("@Secret",lv.Secret),
-                };
-
-                var dt = dh.InsertUpdate("[]", parm, CommandType.StoredProcedure);
-
-                if (dt > 0)
-                {
-                    return true;
-                }
-                return false;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
 
 
 

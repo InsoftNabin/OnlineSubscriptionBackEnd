@@ -16,7 +16,6 @@ namespace OnlineSubscriptionBackEnd.Controllers
             {
                 string ProductKey = LicenseGenerator.GenerateProductKey();
                 return Ok(ProductKey);
-
             }
             catch (Exception ex)
             {
@@ -47,12 +46,12 @@ namespace OnlineSubscriptionBackEnd.Controllers
             try
             {
                 
-                if (string.IsNullOrEmpty(vk.ProductKey) || string.IsNullOrEmpty(vk.ClientKey) || vk.ExpirationDate == default)
+                if (string.IsNullOrEmpty(vk.ProductKey) || string.IsNullOrEmpty(vk.ClientKey) || string.IsNullOrEmpty(vk.UniqueMachineKey) || vk.ExpirationDate == default)
                 {
                     return BadRequest("Invalid inputs provided.");
                 }
 
-                string validityKey = LicenseGenerator.GenerateValidityKey(vk.ProductKey, vk.ClientKey, vk.ExpirationDate);
+                string validityKey = LicenseGenerator.GenerateValidityKey(vk.ProductKey, vk.ClientKey,vk.UniqueMachineKey, vk.ExpirationDate);
                 return Ok(new { validityKey });
             }
             catch (Exception ex)
@@ -71,12 +70,13 @@ namespace OnlineSubscriptionBackEnd.Controllers
                     return BadRequest("Invalid inputs provided.");
                 }
 
-                var (productKey, clientKey, expirationDate) = LicenseGenerator.DecodeValidityKey(request.validityKey);
+                var (productKey, clientKey, UniqueMachineKey, expirationDate) = LicenseGenerator.DecodeValidityKey(request.validityKey);
 
                 return Ok(new
                 {
                     ProductKey = productKey,
                     ClientKey = clientKey,
+                    UniqueMachineKey = UniqueMachineKey,
                     ExpirationDate = expirationDate
                 });
             }

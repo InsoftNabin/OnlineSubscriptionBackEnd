@@ -36,17 +36,17 @@ namespace OnlineSubscriptionBackEnd
         }
 
         // Generate Validity Key
-        public static string GenerateValidityKey(string productKey, string clientKey, DateTime expirationDate)
+        public static string GenerateValidityKey(string productKey, string clientKey,string UniqueMachineKey, DateTime expirationDate)
         {
-            string data = $"{productKey}|{clientKey}|{expirationDate:yyyyMMdd}";
+            string data = $"{productKey}|{clientKey}|{UniqueMachineKey}|{expirationDate:yyyyMMdd}";
             return EncryptionHelper.Encrypt(data);
         }
 
-        public static (string ProductKey, string ClientKey, DateTime ExpirationDate) DecodeValidityKey(string validityKey)
+        public static (string ProductKey, string ClientKey,string UniqueMachineKey,  DateTime ExpirationDate) DecodeValidityKey(string validityKey)
         {
             string decryptedData = EncryptionHelper.Decrypt(validityKey);
             string[] parts = decryptedData.Split('|');
-            return (parts[0], parts[1], DateTime.ParseExact(parts[2], "yyyyMMdd", null));
+            return (parts[0], parts[1],parts[2], DateTime.ParseExact(parts[3], "yyyyMMdd", null));
         }
     }
     public class EncryptionHelper
@@ -108,7 +108,7 @@ namespace OnlineSubscriptionBackEnd
         {
             try
             {
-                var (_, _, expirationDate) = LicenseGenerator.DecodeValidityKey(validityKey);
+                var (_, _,_, expirationDate) = LicenseGenerator.DecodeValidityKey(validityKey);
                 return DateTime.Now <= expirationDate;
             }
             catch

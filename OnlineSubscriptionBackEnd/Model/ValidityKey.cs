@@ -7,6 +7,7 @@ namespace OnlineSubscriptionBackEnd.Model
        
         public string ProductKey { get; set; }
         public string ClientKey { get; set; }
+        public string UniqueMachineKey { get; set; }
         public DateTime ExpirationDate { get; set; }
     }
     public class DecryptKey
