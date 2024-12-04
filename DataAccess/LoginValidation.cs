@@ -5,6 +5,7 @@ using System.Data;
 using System.Text;
 using DataProvider;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace DataAccess
 {
@@ -23,7 +24,7 @@ namespace DataAccess
                 DataTable dt = dh.ReadData("[usp_LoginUser_Validation]", parm, CommandType.StoredProcedure);
 
                 SelectLoginInfo sli = new SelectLoginInfo();
-
+                sli.Role = dt.Rows[0]["Type"].ToString();
                 sli.TokenNo = dt.Rows[0]["Token"].ToString();
                 sli.Status = Int32.Parse(dt.Rows[0]["StatusCode"].ToString());
                 sli.Message = dt.Rows[0]["Message"].ToString();
@@ -31,6 +32,8 @@ namespace DataAccess
                 sli.landingPage = dt.Rows[0]["landingPage"].ToString();
                 //sli.Id = dt.Rows[0]["Id"].ToString();
                 sli.UserName = dt.Rows[0]["UserName"].ToString();
+                sli.Secret = dt.Rows[0]["Secret"].ToString();
+
                 return sli;
             }
             catch (Exception ex)
@@ -40,7 +43,37 @@ namespace DataAccess
         }
 
 
-        
+
+
+
+
+
+        public bool saveSecret(SelectLoginInfo lv)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@TokenNo",lv.TokenNo),
+                    new SqlParameter("@Secret",lv.Secret),
+                };
+
+                var dt = dh.InsertUpdate("[]", parm, CommandType.StoredProcedure);
+
+                if (dt > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
         public SelectLoginInfo GetUserValidationWithExternalLink(LoginValidator lv)
         {
             try
