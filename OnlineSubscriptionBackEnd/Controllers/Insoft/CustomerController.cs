@@ -39,6 +39,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                         new SqlParameter("@GUID",ai.GUID),
                         new SqlParameter("@CompanyCode",ai.CompanyCode),
                         new SqlParameter("@BySMSApiToken",ai.BySMSApiToken),
+                        new SqlParameter("@Country" ,ai.country)
                         //new SqlParameter("@AddedBy",ai.AddedBy)
                     };
                 AffectedRows = AffectedRows + dh.InsertUpdate("Insoft_IU_Customer", parm, CommandType.StoredProcedure);
