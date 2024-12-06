@@ -29,9 +29,9 @@ namespace OnlineSubscriptionBackEnd.Controllers
             try
             {
 
-                string CustomerKey = LicenseGenerator.GenerateClientKey(p.Id.ToString());
+                string CustomerKey = LicenseGenerator.GenerateClientKey(p.GUID.ToString());
                 p.CustomerKey = CustomerKey;
-                return Ok(new { CustomerKey = p.CustomerKey });
+                return Ok(CustomerKey );
 
             }
             catch (Exception ex)
@@ -40,24 +40,55 @@ namespace OnlineSubscriptionBackEnd.Controllers
             }
         }
 
+        //[HttpPost]
+        //public ActionResult ProduceValidityKey([FromBody] ValidityKey vk)
+        //{
+        //    try
+        //    {
+
+        //        if (string.IsNullOrEmpty(vk.ProductKey) || string.IsNullOrEmpty(vk.ClientKey) ||  vk.ExpirationDate == default)
+        //        {
+        //            return BadRequest("Invalid inputs provided.");
+        //        }
+
+        //        string validityKey = LicenseGenerator.GenerateValidityKey(vk.ProductKey, vk.ClientKey, vk.ExpirationDate, vk.UniqueMachineKey);
+        //        return Ok(new { validityKey });
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return StatusCode(500, $"Internal server error: {ex.Message}");
+        //    }
+        //}
+
+
+
+
         [HttpPost]
-        public ActionResult ProduceValidityKey([FromBody] ValidityKey vk)
+        public ActionResult ProduceValidityKey(SubProduct subProduct)
         {
             try
             {
-                
-                if (string.IsNullOrEmpty(vk.ProductKey) || string.IsNullOrEmpty(vk.ClientKey) || string.IsNullOrEmpty(vk.UniqueMachineKey) || vk.ExpirationDate == default)
+                // Ensure input validation
+                if (string.IsNullOrEmpty(subProduct.clientGUID) ||
+                    string.IsNullOrEmpty(subProduct.ProductGUID) )
                 {
-                    return BadRequest("Invalid inputs provided.");
+                    return BadRequest("Invalid inputs for generating the validity key.");
                 }
 
-                string validityKey = LicenseGenerator.GenerateValidityKey(vk.ProductKey, vk.ClientKey,vk.UniqueMachineKey, vk.ExpirationDate);
-                return Ok(new { validityKey });
+                // Generate the ValidityKey
+                string validityKey = LicenseGenerator.GenerateValidityKey(
+                    subProduct.ProductGUID,
+                    subProduct.clientGUID,
+                    DateTime.Parse(subProduct.ExpiryDate),
+                    subProduct.MachineKey
+                );
+
+                return Ok(validityKey);
             }
             catch (Exception ex)
             {
-             
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return BadRequest($"Error generating validity key: {ex.Message}");
             }
         }
         [HttpPost]
@@ -109,9 +140,6 @@ namespace OnlineSubscriptionBackEnd.Controllers
                 return StatusCode(500, new { Message = "Internal server error.", Error = ex.Message });
             }
         }
-
-
-
 
     }
 }

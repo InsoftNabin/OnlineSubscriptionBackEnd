@@ -8,6 +8,7 @@ using System;
 using OnlineSubscriptionBackEnd.Model.Insoft;
 
 using Newtonsoft.Json.Linq;
+using OnlineSubscriptionBackEnd.Model;
 
 
 namespace OnlineSubscriptionBackEnd.Controllers.Insoft
@@ -17,35 +18,129 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
     {
         DataHandeler dh = new DataHandeler();
 
+        //[HttpPost]
+        //public ActionResult InsertUpdate([FromBody] CustomerwiseModules ai)
+        //{
+        //    try
+        //    {
+        //        ValidityKey vk = new ValidityKey();
+
+
+        //        GenerateKeyController gk = new GenerateKeyController();
+
+        //        var result = gk.ProduceValidityKey(SubProduct sp);
+
+        //        string Key = null;
+        //        if (result is OkObjectResult okResult)
+        //        {
+        //            Key = okResult.Value?.ToString();
+
+        //        }
+
+
+
+        //        int totalAffectedRows = 0;
+        //        foreach (var subProduct in ai.subProducts)
+        //        {
+        //            SqlParameter[] parameters = {
+        //                new SqlParameter("@Id", subProduct.Id),
+        //                new SqlParameter("@TokenNo", ai.TokenNo),
+        //                new SqlParameter("@CustomerId", ai.CustomerId),
+        //                new SqlParameter("@ProductId", subProduct.ProductId),
+        //                new SqlParameter("@AgentId", ai.AgentId),
+        //                new SqlParameter("@SubProductId", subProduct.SubProductId),
+        //                new SqlParameter("@JoinDate", subProduct.JoinDate),
+        //                new SqlParameter("@LastRenewDate", subProduct.LastRenewDate),
+        //                new SqlParameter("@ExpiryDate", subProduct.ExpiryDate),
+        //                new SqlParameter("@Initial", ai.Initial),
+        //                new SqlParameter("@MonthlyCharge", subProduct.MonthlyCharge),
+        //                new SqlParameter("@SerialNumber", ai.SerialNumber),
+        //                new SqlParameter("@SiteURL", ai.SiteURL),
+        //                new SqlParameter("@Remarks", subProduct.Remarks),
+        //                new SqlParameter("@Plan", subProduct.Plan),
+        //                new SqlParameter("@TotalPrice",ai.TotalPrice)
+
+        //         };
+        //            totalAffectedRows += dh.InsertUpdate("[Insoft_IU_InsertUpdateCustomerwisemoduledetails]", parameters, CommandType.StoredProcedure);
+        //        }
+        //        return Json(totalAffectedRows);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
+
         [HttpPost]
         public ActionResult InsertUpdate([FromBody] CustomerwiseModules ai)
         {
             try
             {
+                // Total affected rows counter
                 int totalAffectedRows = 0;
+
+                // Iterate through SubProducts
                 foreach (var subProduct in ai.subProducts)
                 {
-                    SqlParameter[] parameters = {
-                        new SqlParameter("@Id", subProduct.Id),
-                        new SqlParameter("@TokenNo", ai.TokenNo),
-                        new SqlParameter("@CustomerId", ai.CustomerId),
-                        new SqlParameter("@ProductId", subProduct.ProductId),
-                        new SqlParameter("@AgentId", ai.AgentId),
-                        new SqlParameter("@SubProductId", subProduct.SubProductId),
-                        new SqlParameter("@JoinDate", subProduct.JoinDate),
-                        new SqlParameter("@LastRenewDate", subProduct.LastRenewDate),
-                        new SqlParameter("@ExpiryDate", subProduct.ExpiryDate),
-                        new SqlParameter("@Initial", ai.Initial),
-                        new SqlParameter("@MonthlyCharge", subProduct.MonthlyCharge),
-                        new SqlParameter("@SerialNumber", ai.SerialNumber),
-                        new SqlParameter("@SiteURL", ai.SiteURL),
-                        new SqlParameter("@Remarks", subProduct.Remarks),
-                        new SqlParameter("@Plan", subProduct.Plan),
-                        new SqlParameter("@TotalPrice",ai.TotalPrice)
+                    GenerateKeyController gk = new GenerateKeyController();
 
-                 };
+
+                    var result = gk.ProduceProductKey();
+                    string Key = null;
+                    string GUID="";
+                    string UniqCustomerKey;
+
+                    if (result is OkObjectResult okResult)
+                    {
+                        Key = okResult.Value?.ToString();
+                        GUID = Key;
+                    }
+
+                    Customer cs = new Customer();
+                    cs.GUID = GUID;
+
+
+                    var responseCustomerKey = gk.ProduceCustomerKey(cs);
+
+                    string CtKey = null;
+                    if (responseCustomerKey is OkObjectResult okResult1)
+                    {
+                        CtKey = okResult1.Value?.ToString();
+                        UniqCustomerKey = CtKey;
+                    }
+                    else
+                    {
+                        throw new Exception("Failed to generate ProductKey. Invalid response type.");
+                    }
+
+
+
+
+                    // Insert or update in the database
+                    SqlParameter[] parameters = {
+                new SqlParameter("@Id", subProduct.Id),
+                new SqlParameter("@TokenNo", ai.TokenNo),
+                new SqlParameter("@CustomerId", ai.CustomerId),
+                new SqlParameter("@ProductId", subProduct.ProductId),
+                new SqlParameter("@AgentId", ai.AgentId),
+                new SqlParameter("@SubProductId", subProduct.SubProductId),
+                new SqlParameter("@JoinDate", subProduct.JoinDate),
+                new SqlParameter("@LastRenewDate", subProduct.LastRenewDate),
+                new SqlParameter("@ExpiryDate", subProduct.ExpiryDate),
+                new SqlParameter("@Initial", ai.Initial),
+                new SqlParameter("@MonthlyCharge", subProduct.MonthlyCharge),
+                new SqlParameter("@SerialNumber", ai.SerialNumber),
+                new SqlParameter("@SiteURL", ai.SiteURL),
+                new SqlParameter("@Remarks", subProduct.Remarks),
+                new SqlParameter("@Plan", subProduct.Plan),
+                new SqlParameter("@TotalPrice", ai.TotalPrice),
+                new SqlParameter("@ValidityKey", UniqCustomerKey),
+                
+            };
+
                     totalAffectedRows += dh.InsertUpdate("[Insoft_IU_InsertUpdateCustomerwisemoduledetails]", parameters, CommandType.StoredProcedure);
                 }
+
                 return Json(totalAffectedRows);
             }
             catch (Exception ex)
@@ -53,43 +148,6 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 return BadRequest(ex.Message);
             }
         }
-
-        //[HttpPost]
-        //public JsonResult InsertUpdate([FromBody] CustomerwiseModules ai )
-        //{
-        //    try
-        //    {
-        //        int totalAffectedRows = 0;
-
-
-        //            SqlParameter[] parameters = {
-        //        new SqlParameter("@Id", ai.Id),
-        //        new SqlParameter("@TokenNo", ai.TokenNo),
-        //        new SqlParameter("@CustomerId", ai.CustomerId),
-        //        new SqlParameter("@ProductId", ai.ProductId),
-        //        new SqlParameter("@AgentId", ai.AgentId),
-        //        new SqlParameter("@SubProductId", ai.SubProductId),
-        //        new SqlParameter("@JoinDate", ai.JoinDate),
-        //        new SqlParameter("@LastRenewDate", ai.LastRenewDate),
-        //        new SqlParameter("@ExpiryDate", ai.ExpiryDate),
-        //        new SqlParameter("@Initial", ai.initial),
-        //        new SqlParameter("@MonthlyCharge", ai.MonthlyCharge),
-        //        new SqlParameter("@SerialNumber", ai.SerialNumber),
-        //        new SqlParameter("@SiteURL", ai.siteURL),
-        //        new SqlParameter("@Remarks", ai.Remarks)
-
-
-        //            totalAffectedRows += dh.InsertUpdate("[Insoft_S_InsertUpdateCustomerwisemoduledetails]", parameters, CommandType.StoredProcedure);
-        //        }
-
-        //        return Json(totalAffectedRows);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json(new { success = false, message = ex.Message });
-        //    }
-        //}
-
 
 
         [HttpPost]

@@ -7,6 +7,7 @@
         public string AddedBy { get; set; }
         public string TokenNo { get; set; }
         public string CustomerName { get; set; }
+        public string UniqCustomerKey { get; set; }
         public string CustomerCode { get; set; }
         public string Address { get; set; }
         public string country { get; set; }

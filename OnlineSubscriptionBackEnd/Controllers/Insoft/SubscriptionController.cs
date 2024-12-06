@@ -297,6 +297,45 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
         //}
 
 
+
+        [HttpPost]
+        public IActionResult ValidateSubscriptionwiithCustomerandProduct([FromBody] ApiRequest ar)
+        {
+            try
+            {
+                SqlParameter[] parm; 
+
+                if (!string.IsNullOrEmpty(ar.UniqueMachineCode))
+                {
+                    parm = new SqlParameter[]
+                    {
+                new SqlParameter("@CustomerGUIDId", ar.CustomerId),
+                new SqlParameter("@ProductGUIDId", ar.ProductId),
+                new SqlParameter("@UniqueMachineKey", ar.UniqueMachineCode)
+                    };
+                }
+                else
+                {
+                    parm = new SqlParameter[]
+                    {
+                new SqlParameter("@CustomerGUIDId", ar.CustomerId),
+                new SqlParameter("@ProductGUIDId", ar.ProductId)
+                    };
+                }
+
+                return FetchSubscriptionDetailsCandP(parm);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status417ExpectationFailed, new ResponceModel
+                {
+                    Status = "417",
+                    Message = ex.Message
+                });
+            }
+        }
+
+
         [HttpPost]
         public IActionResult ValidateSubscription([FromBody] ApiRequest ar)
         {
@@ -304,20 +343,26 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             {
                 if (!string.IsNullOrEmpty(ar.validityKey))
                 {
-                    GenerateKeyController gk = new GenerateKeyController();
-                    var actionResult = gk.DecryptValidityKey(new DecryptKey { validityKey = ar.validityKey });
+                    //GenerateKeyController gk = new GenerateKeyController();
+                    //var actionResult = gk.DecryptValidityKey(new DecryptKey { validityKey = ar.validityKey });
 
-                    if (actionResult is OkObjectResult okResult && okResult.Value != null)
-                    {
-                        var decodedData = okResult.Value;
-                        var vk = JsonConvert.DeserializeObject<ValidityKey>(JsonConvert.SerializeObject(decodedData));
+                    //if (actionResult is OkObjectResult okResult && okResult.Value != null)
+                    //{
+                    //    var decodedData = okResult.Value;
+                    //    var vk = JsonConvert.DeserializeObject<ValidityKey>(JsonConvert.SerializeObject(decodedData));
+
+                        //SqlParameter[] parm =
+                        //{
+                        //     new SqlParameter("@CustomerId",vk.ProductKey ),
+                        //     new SqlParameter("@ProductId", vk.ClientKey),
+                        //     new SqlParameter("@UniqueMachineKey", ar.UniqueMachineCode)
+                        //};
 
                         SqlParameter[] parm =
                         {
-                             new SqlParameter("@CustomerId",vk.ProductKey ),
-                             new SqlParameter("@ProductId", vk.ClientKey),
-                             new SqlParameter("@UniqueMachineKey", ar.UniqueMachineCode)
+                            new SqlParameter("@SubscriptionGUID", ar.validityKey)
                         };
+
 
                         return FetchSubscriptionDetails(parm);
                     }
@@ -325,20 +370,6 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                     {
                         return BadRequest(new { Status = "400", Message = "Failed to decode validity key." });
                     }
-                }
-                else
-                {
-                    
-                    SqlParameter[] parm =
-                    {
-                        new SqlParameter("@CustomerId", ar.CustomerId),
-                        new SqlParameter("@ProductId", ar.ProductId),
-                        new SqlParameter("@UniqueMachineKey", ar.UniqueMachineCode)
-
-                    };
-
-                    return FetchSubscriptionDetails(parm);
-                }
             }
             catch (Exception ex)
             {
@@ -383,7 +414,37 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
         }
 
 
+        private IActionResult FetchSubscriptionDetailsCandP(SqlParameter[] parm)
+        {
+            try
+            {
+                string data = dh.ReadToJson("[Insoft_S_ValidateSubscriptionwithCustomer&Product]", parm, CommandType.StoredProcedure);
 
+                List<SubscriptionResponse> student = JsonConvert.DeserializeObject<List<SubscriptionResponse>>(data);
+                if (student.Count > 0)
+                {
+                    var subscription = student[0];
+                    ResponceModel rm = new ResponceModel
+                    {
+                        Status = subscription.Status,
+                        Message = subscription.Message,
+                        ExpireDate = subscription.ExpireDate,
+                        RemainingDays = subscription.RemainingDays,
+                        LandingPage = subscription.LandingPage
+                    };
+
+                    return StatusCode(StatusCodes.Status200OK, rm);
+                }
+                else
+                {
+                    return NotFound(new { Status = "404", Message = "Data not found." });
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { Message = "Failed to fetch subscription details.", Error = ex.Message });
+            }
+        }
 
 
 

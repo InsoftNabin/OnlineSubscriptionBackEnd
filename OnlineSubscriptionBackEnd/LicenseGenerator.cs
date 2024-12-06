@@ -36,19 +36,25 @@ namespace OnlineSubscriptionBackEnd
         }
 
         // Generate Validity Key
-        public static string GenerateValidityKey(string productKey, string clientKey,string UniqueMachineKey, DateTime expirationDate)
+        public static string GenerateValidityKey(string productKey, string clientKey, DateTime expirationDate, string uniqueMachineKey = null)
         {
-            string data = $"{productKey}|{clientKey}|{UniqueMachineKey}|{expirationDate:yyyyMMdd}";
+            string data = $"{productKey}|{clientKey}|{uniqueMachineKey ?? "N/A"}|{expirationDate:yyyyMMdd}";
             return EncryptionHelper.Encrypt(data);
         }
 
-        public static (string ProductKey, string ClientKey,string UniqueMachineKey,  DateTime ExpirationDate) DecodeValidityKey(string validityKey)
+        // Decode Validity Key
+        public static (string ProductKey, string ClientKey, string UniqueMachineKey, DateTime ExpirationDate) DecodeValidityKey(string validityKey)
         {
             string decryptedData = EncryptionHelper.Decrypt(validityKey);
             string[] parts = decryptedData.Split('|');
-            return (parts[0], parts[1],parts[2], DateTime.ParseExact(parts[3], "yyyyMMdd", null));
+
+            // Check if UniqueMachineKey is present or defaulted to "N/A"
+            string uniqueMachineKey = parts[2] == "N/A" ? null : parts[2];
+
+            return (parts[0], parts[1], uniqueMachineKey, DateTime.ParseExact(parts[3], "yyyyMMdd", null));
         }
     }
+
     public class EncryptionHelper
     {
         private static readonly Aes aes = Aes.Create();
@@ -108,7 +114,7 @@ namespace OnlineSubscriptionBackEnd
         {
             try
             {
-                var (_, _,_, expirationDate) = LicenseGenerator.DecodeValidityKey(validityKey);
+                var (_, _, _, expirationDate) = LicenseGenerator.DecodeValidityKey(validityKey);
                 return DateTime.Now <= expirationDate;
             }
             catch
@@ -117,5 +123,4 @@ namespace OnlineSubscriptionBackEnd
             }
         }
     }
-
 }

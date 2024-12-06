@@ -55,9 +55,16 @@ namespace DataAccess
         {
             try
             {
+           
+
+                
+
                 SqlParameter[] parm = {
                     new SqlParameter("@CustomerSubscriptionGuid",lv.CustomerSubscriptionGuid)
                 };
+
+
+
 
                 DataTable dt = dh.ReadData("[usp_LoginUser_Validation_ExternalLink]", parm, CommandType.StoredProcedure);
 
