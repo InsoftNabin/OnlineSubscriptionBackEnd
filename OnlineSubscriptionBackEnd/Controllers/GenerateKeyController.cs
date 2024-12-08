@@ -65,7 +65,7 @@ namespace OnlineSubscriptionBackEnd.Controllers
 
 
         [HttpPost]
-        public ActionResult ProduceValidityKey(SubProduct subProduct)
+        public ActionResult ProduceValidityKey([FromBody] SubProduct subProduct)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace OnlineSubscriptionBackEnd.Controllers
                 }
 
                 // Generate the ValidityKey
-                string validityKey = LicenseGenerator.GenerateValidityKey(
+                    string validityKey = LicenseGenerator.GenerateValidityKey(
                     subProduct.ProductGUID,
                     subProduct.clientGUID,
                     DateTime.Parse(subProduct.ExpiryDate),

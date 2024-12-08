@@ -6,6 +6,7 @@
         public string ProductId { get; set; }
         public string? UniqueMachineCode { get; set; }
         public string? validityKey { get; set; }
+        public string? subscriptionGUID { get; set; }
 
     }
 }

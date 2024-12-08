@@ -341,7 +341,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
         {
             try
             {
-                if (!string.IsNullOrEmpty(ar.validityKey))
+                if (!string.IsNullOrEmpty(ar.subscriptionGUID))
                 {
                     //GenerateKeyController gk = new GenerateKeyController();
                     //var actionResult = gk.DecryptValidityKey(new DecryptKey { validityKey = ar.validityKey });
@@ -360,7 +360,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
                         SqlParameter[] parm =
                         {
-                            new SqlParameter("@SubscriptionGUID", ar.validityKey)
+                            new SqlParameter("@SubscriptionGUID", ar.subscriptionGUID)
                         };
 
 

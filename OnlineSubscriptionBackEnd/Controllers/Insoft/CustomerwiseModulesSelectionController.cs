@@ -18,105 +18,121 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
     {
         DataHandeler dh = new DataHandeler();
 
-        //[HttpPost]
-        //public ActionResult InsertUpdate([FromBody] CustomerwiseModules ai)
-        //{
-        //    try
-        //    {
-        //        ValidityKey vk = new ValidityKey();
-
-
-        //        GenerateKeyController gk = new GenerateKeyController();
-
-        //        var result = gk.ProduceValidityKey(SubProduct sp);
-
-        //        string Key = null;
-        //        if (result is OkObjectResult okResult)
-        //        {
-        //            Key = okResult.Value?.ToString();
-
-        //        }
-
-
-
-        //        int totalAffectedRows = 0;
-        //        foreach (var subProduct in ai.subProducts)
-        //        {
-        //            SqlParameter[] parameters = {
-        //                new SqlParameter("@Id", subProduct.Id),
-        //                new SqlParameter("@TokenNo", ai.TokenNo),
-        //                new SqlParameter("@CustomerId", ai.CustomerId),
-        //                new SqlParameter("@ProductId", subProduct.ProductId),
-        //                new SqlParameter("@AgentId", ai.AgentId),
-        //                new SqlParameter("@SubProductId", subProduct.SubProductId),
-        //                new SqlParameter("@JoinDate", subProduct.JoinDate),
-        //                new SqlParameter("@LastRenewDate", subProduct.LastRenewDate),
-        //                new SqlParameter("@ExpiryDate", subProduct.ExpiryDate),
-        //                new SqlParameter("@Initial", ai.Initial),
-        //                new SqlParameter("@MonthlyCharge", subProduct.MonthlyCharge),
-        //                new SqlParameter("@SerialNumber", ai.SerialNumber),
-        //                new SqlParameter("@SiteURL", ai.SiteURL),
-        //                new SqlParameter("@Remarks", subProduct.Remarks),
-        //                new SqlParameter("@Plan", subProduct.Plan),
-        //                new SqlParameter("@TotalPrice",ai.TotalPrice)
-
-        //         };
-        //            totalAffectedRows += dh.InsertUpdate("[Insoft_IU_InsertUpdateCustomerwisemoduledetails]", parameters, CommandType.StoredProcedure);
-        //        }
-        //        return Json(totalAffectedRows);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
-
-        [HttpPost]
         public ActionResult InsertUpdate([FromBody] CustomerwiseModules ai)
         {
             try
             {
-                // Total affected rows counter
                 int totalAffectedRows = 0;
-
-                // Iterate through SubProducts
                 foreach (var subProduct in ai.subProducts)
                 {
-                    GenerateKeyController gk = new GenerateKeyController();
+                    string productKey = null;
+                    string customerKey = null;
+                    string productGUID = null;
+                    string licenseKey = null;
 
+                    //---------------------------------------- Check if the entry exists in the database-----------------------------
+                    SqlParameter[] parm = {
+                new SqlParameter("@TokenNo", ai.TokenNo),
+                new SqlParameter("@CustomerId", ai.CustomerId),
+                new SqlParameter("@ProductId", subProduct.ProductId)
+            };
 
-                    var result = gk.ProduceProductKey();
-                    string Key = null;
-                    string GUID="";
-                    string UniqCustomerKey;
+                    string data = dh.ReadToJson("[Insoft_getKeysforValidity]", parm, CommandType.StoredProcedure);
 
-                    if (result is OkObjectResult okResult)
+                    if (!string.IsNullOrEmpty(data))
                     {
-                        Key = okResult.Value?.ToString();
-                        GUID = Key;
+                        //----------------------------------------- Deserialize the result--------------------------------------------
+                        var dataList = JsonConvert.DeserializeObject<List<KeyResponse>>(data);
+                        if (dataList != null && dataList.Count > 0)
+                        {
+                            var firstEntry = dataList[0];
+                            customerKey = firstEntry.customerKey;
+                            productKey = firstEntry.productKey;
+
+                            // If customerKey is empty, generate a new one
+                            if (string.IsNullOrWhiteSpace(customerKey))
+                            {
+                                GenerateKeyController gk = new GenerateKeyController();
+                                Customer cs = new Customer { GUID = productKey };
+                                var responseCustomerKey = gk.ProduceCustomerKey(cs);
+                                if (responseCustomerKey is OkObjectResult okResult)
+                                {
+                                    customerKey = okResult.Value?.ToString();
+                                }
+                                else
+                                {
+                                    throw new Exception("Failed to generate CustomerKey. Invalid response type.");
+                                }
+                            }
+
+                            // --------------------------------------------Create LicenseKey with existing keys-----------------------------------------
+                            SubProduct sp = new SubProduct
+                            {
+                                ProductGUID = productKey,
+                                clientGUID = customerKey,
+                                ExpiryDate = subProduct.ExpiryDate
+                            };
+
+                            var requestLicenseKey = new GenerateKeyController().ProduceValidityKey(sp);
+                            if (requestLicenseKey is OkObjectResult okResult2)
+                            {
+                                licenseKey = okResult2.Value?.ToString();
+                            }
+                            else
+                            {
+                                throw new Exception("Failed to generate LicenseKey. Invalid response type.");
+                            }
+                        }
+                        else
+                        {
+                            // ------------------------------------------Generate new keys if no existing entry found-------------------------
+                            GenerateKeyController gk = new GenerateKeyController();
+
+                            //------------------------------------------ Generate ProductKey---------------------------------------
+                            var result = gk.ProduceProductKey();
+                            if (result is OkObjectResult okResult)
+                            {
+                                productKey = okResult.Value?.ToString();
+                                productGUID = productKey;
+                            }
+                            else
+                            {
+                                throw new Exception("Failed to generate ProductKey. Invalid response type.");
+                            }
+
+                            //------------------------- Generate CustomerKey--------------------------------------------------------
+                            Customer cs = new Customer { GUID = productGUID };
+                            var responseCustomerKey = gk.ProduceCustomerKey(cs);
+                            if (responseCustomerKey is OkObjectResult okResult1)
+                            {
+                                customerKey = okResult1.Value?.ToString();
+                            }
+                            else
+                            {
+                                throw new Exception("Failed to generate CustomerKey. Invalid response type.");
+                            }
+
+                            // ---------------------------------------Generate LicenseKey---------------------------
+                            SubProduct sp = new SubProduct
+                            {
+                                ProductGUID = productGUID,
+                                clientGUID = customerKey,
+                                ExpiryDate = subProduct.ExpiryDate
+                            };
+
+                            var requestLicenseKey = gk.ProduceValidityKey(sp);
+                            if (requestLicenseKey is OkObjectResult okResult2)
+                            {
+                                licenseKey = okResult2.Value?.ToString();
+                            }
+                            else
+                            {
+                                throw new Exception("Failed to generate LicenseKey. Invalid response type.");
+                            }
+                        }
                     }
 
-                    Customer cs = new Customer();
-                    cs.GUID = GUID;
-
-
-                    var responseCustomerKey = gk.ProduceCustomerKey(cs);
-
-                    string CtKey = null;
-                    if (responseCustomerKey is OkObjectResult okResult1)
-                    {
-                        CtKey = okResult1.Value?.ToString();
-                        UniqCustomerKey = CtKey;
-                    }
-                    else
-                    {
-                        throw new Exception("Failed to generate ProductKey. Invalid response type.");
-                    }
-
-
-
-
-                    // Insert or update in the database
+                    //--------------------------- Insert or update in the database----------------------------
                     SqlParameter[] parameters = {
                 new SqlParameter("@Id", subProduct.Id),
                 new SqlParameter("@TokenNo", ai.TokenNo),
@@ -134,10 +150,9 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 new SqlParameter("@Remarks", subProduct.Remarks),
                 new SqlParameter("@Plan", subProduct.Plan),
                 new SqlParameter("@TotalPrice", ai.TotalPrice),
-                new SqlParameter("@ValidityKey", UniqCustomerKey),
-                
+                new SqlParameter("@ValidityKey", customerKey),
+                new SqlParameter("@LicenseKey", licenseKey)
             };
-
                     totalAffectedRows += dh.InsertUpdate("[Insoft_IU_InsertUpdateCustomerwisemoduledetails]", parameters, CommandType.StoredProcedure);
                 }
 
@@ -148,7 +163,6 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 return BadRequest(ex.Message);
             }
         }
-
 
         [HttpPost]
         public ActionResult getAllCustomerwiseModules([FromBody] string TokenNo)
