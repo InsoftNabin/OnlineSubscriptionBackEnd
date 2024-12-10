@@ -87,6 +87,25 @@ namespace OnlineSubscriptionBackEnd.Controllers
                 throw ex;
             }
         }
+
+        [HttpPost]
+        public ActionResult GetUnverifiedOrganizations([FromBody] string TokenNo)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@TokenNo",TokenNo)
+                };
+                string data = dh.ReadToJson("[asp_Admin_getUnverifiedOrg]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         [HttpPost]
         public JsonResult GetOrganizationsById([FromBody] OrgDetails em)
         {
@@ -237,7 +256,6 @@ namespace OnlineSubscriptionBackEnd.Controllers
                 };
                 int Block = dh.Update("Usp_U_OrgdetailsByAdmin", parm, CommandType.StoredProcedure);
                 return Json(Block);
-
             }
             catch (Exception ex)
             {
