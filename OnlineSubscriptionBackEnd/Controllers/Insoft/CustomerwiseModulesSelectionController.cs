@@ -32,10 +32,10 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
                     //---------------------------------------- Check if the entry exists in the database-----------------------------
                     SqlParameter[] parm = {
-                new SqlParameter("@TokenNo", ai.TokenNo),
-                new SqlParameter("@CustomerId", ai.CustomerId),
-                new SqlParameter("@ProductId", subProduct.ProductId)
-            };
+                                     new SqlParameter("@TokenNo", ai.TokenNo),
+                                     new SqlParameter("@CustomerId", ai.CustomerId),
+                                     new SqlParameter("@ProductId", subProduct.ProductId)
+                                 };
 
                     string data = dh.ReadToJson("[Insoft_getKeysforValidity]", parm, CommandType.StoredProcedure);
 
@@ -53,7 +53,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                             if (string.IsNullOrWhiteSpace(customerKey))
                             {
                                 GenerateKeyController gk = new GenerateKeyController();
-                                Customer cs = new Customer { GUID = productKey };
+                                Customer cs = new Customer { GUID = Guid.NewGuid().ToString() }; //--------was GUID=productKey initially------
                                 var responseCustomerKey = gk.ProduceCustomerKey(cs);
                                 if (responseCustomerKey is OkObjectResult okResult)
                                 {
@@ -64,6 +64,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                                     throw new Exception("Failed to generate CustomerKey. Invalid response type.");
                                 }
                             }
+
 
                             // --------------------------------------------Create LicenseKey with existing keys-----------------------------------------
                             SubProduct sp = new SubProduct
