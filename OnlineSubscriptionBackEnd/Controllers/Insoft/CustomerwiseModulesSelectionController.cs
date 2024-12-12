@@ -75,9 +75,29 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                             };
 
                             var requestLicenseKey = new GenerateKeyController().ProduceValidityKey(sp);
+
                             if (requestLicenseKey is OkObjectResult okResult2)
                             {
-                                licenseKey = okResult2.Value?.ToString();
+                                var result = okResult2.Value as dynamic;
+                                if (result != null)
+                                {
+
+                                    licenseKey = result.ValidityKey?.ToString();
+
+
+                                    if (!string.IsNullOrEmpty(licenseKey))
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        throw new Exception("Failed to generate a valid license key.");
+                                    }
+                                }
+                                else
+                                {
+                                    throw new Exception("Invalid response format.");
+                                }
                             }
                             else
                             {

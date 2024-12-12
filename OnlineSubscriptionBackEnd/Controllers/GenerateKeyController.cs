@@ -75,61 +75,95 @@ namespace OnlineSubscriptionBackEnd.Controllers
             }
         }
 
+
         [HttpPost]
         public ActionResult ProduceValidityKey([FromBody] SubProduct subProduct)
         {
             try
             {
+                // Validate required inputs
                 if (string.IsNullOrEmpty(subProduct.clientGUID) || string.IsNullOrEmpty(subProduct.ProductGUID))
                 {
                     return BadRequest("Invalid inputs for generating the validity key.");
                 }
 
+                // Prepare SQL parameter for database call
                 SqlParameter[] parm = {
-                                            new SqlParameter("@SubscriptionGUID", subProduct.clientGUID),
-                                        };
+            new SqlParameter("@SubscriptionGUID", subProduct.clientGUID)
+        };
 
+                // Fetch data from stored procedure
                 string DataInfo = dh.ReadToJson("[usp_S_getExpiryDateFromSubsGUID]", parm, CommandType.StoredProcedure);
+                string validityKey;
+                DateTime expirationDate;
 
-                var expiryDate = JsonConvert.DeserializeObject<List<SubProduct>>(DataInfo);
-
-                if (expiryDate == null)
+                if (!string.IsNullOrEmpty(DataInfo))
                 {
-                    return BadRequest("Expiration date not found.");
+                    // Deserialize the returned data (it should include ExpiryDate or StatusCode)
+                    var result = JsonConvert.DeserializeObject<List<dynamic>>(DataInfo);
+
+                    // Check for StatusCode value and handle accordingly
+                    if (result != null && result.Count > 0)
+                    {
+                        if (result[0].StatusCode == 404)
+                        {
+                            // No active subscription, handle as fallback
+                            if (!DateTime.TryParse(subProduct.ExpiryDate, out expirationDate))
+                            {
+                                return BadRequest("Invalid expiration date format in subProduct.ExpiryDate.");
+                            }
+                        }
+                        else
+                        {
+                            // ExpiryDate found in database, use it
+                            expirationDate = result[0].ExpirationDate;
+                        }
+
+                        // Generate validity key
+                        validityKey = LicenseGenerator.GenerateValidityKey(
+                            subProduct.ProductGUID,
+                            subProduct.clientGUID,
+                            expirationDate,
+                            subProduct.MachineKey
+                        );
+                    }
+                    else
+                    {
+                        return BadRequest("No data returned from the stored procedure.");
+                    }
+                }
+                else
+                {
+                    return BadRequest("Error retrieving data from the database.");
                 }
 
-                string validityKey = LicenseGenerator.GenerateValidityKey(
-                    subProduct.ProductGUID,
-                    subProduct.clientGUID,
-                    expiryDate[0].ExpirationDate, 
-                    subProduct.MachineKey
-                );
+                // Decode validity key
+                var (productKey, clientKey, uniqueMachineKey, decodedExpirationDate) = LicenseGenerator.DecodeValidityKey(validityKey);
 
-                var (productKey, clientKey, UniqueMachineKey, expirationDate) = LicenseGenerator.DecodeValidityKey(validityKey);
-
-                UniqueMachineKey = UniqueMachineKey ?? "";
-
-                var remainingDays = (expirationDate - DateTime.Now).Days;
-
-                var formattedExpirationDate = expirationDate.ToString("yyyy/MM/dd");
-
+                // Calculate remaining days
+                int remainingDays = (decodedExpirationDate - DateTime.Now).Days;
+                string formattedExpirationDate = decodedExpirationDate.ToString("yyyy/MM/dd");
                 string statusMessage = remainingDays > 0 ? "Valid Subscription" : "Expired Subscription";
                 int statusCode = remainingDays > 0 ? 1 : 0;
 
+                // Return success response
                 return Ok(new
                 {
                     Status = statusCode,
                     Message = statusMessage,
                     ExpirationDate = formattedExpirationDate,
                     RemainingDays = remainingDays,
-                    ValidityKey = validityKey
+                    ValidityKey = validityKey,
+                    UniqueMachineKey = uniqueMachineKey
                 });
             }
             catch (Exception ex)
             {
+                // Return error response
                 return BadRequest($"Error generating validity key: {ex.Message}");
             }
         }
+
 
 
 
