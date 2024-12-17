@@ -71,7 +71,8 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                             {
                                 ProductGUID = productKey,
                                 clientGUID = customerKey,
-                                ExpiryDate = subProduct.ExpiryDate
+                                ExpiryDate = subProduct.ExpiryDate,
+                                MachineKey=ai.MachineKey
                             };
 
                             var requestLicenseKey = new GenerateKeyController().ProduceValidityKey(sp);
@@ -172,7 +173,8 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 new SqlParameter("@Plan", subProduct.Plan),
                 new SqlParameter("@TotalPrice", ai.TotalPrice),
                 new SqlParameter("@ValidityKey", customerKey),
-                new SqlParameter("@LicenseKey", licenseKey)
+                new SqlParameter("@LicenseKey", licenseKey),
+                new SqlParameter("@MachineKey",ai.MachineKey)
             };
                     totalAffectedRows += dh.InsertUpdate("[Insoft_IU_InsertUpdateCustomerwisemoduledetails]", parameters, CommandType.StoredProcedure);
                 }

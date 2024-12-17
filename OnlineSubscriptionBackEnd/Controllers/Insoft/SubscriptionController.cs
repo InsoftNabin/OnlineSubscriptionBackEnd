@@ -159,7 +159,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
 
         [HttpPost]
-        public ActionResult getSubscriptionLogByCustandprodId([FromBody] CustomerPlan p)
+        public ActionResult GetSubscriptionLogByCustandprodId([FromBody] CustomerPlan p)
         {
             try
             {

@@ -43,7 +43,8 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                         new SqlParameter("@Description", ai.Description),
                         new SqlParameter("@Version", ai.Version),
                         new SqlParameter("@siteURL",ai.siteURL),
-                        new SqlParameter("@ProductKey", productKey) 
+                        new SqlParameter("@ProductKey", productKey) ,
+                        new SqlParameter("@Type",ai.Type)
                     };
 
                 AffectedRows += dh.InsertUpdate("[Insoft_IU_Product]", parm, CommandType.StoredProcedure);
