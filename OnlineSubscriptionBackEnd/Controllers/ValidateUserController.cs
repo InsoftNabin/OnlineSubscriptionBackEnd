@@ -24,6 +24,24 @@ namespace OnlineSubscriptionBackEnd.Controllers
             }
         }
 
+
+
+        [HttpPost]
+        public JsonResult ValidateUserExternallink([FromBody] LoginValidator lv)
+        {
+            try
+            {
+                LoginValidation lv1 = new LoginValidation();
+                SelectLoginInfo li = lv1.GetUserValidationWithExternalLink(lv);
+                return Json(li);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         [HttpPost]
         public JsonResult ValidateAdmin([FromBody] LoginValidator lv)
         {

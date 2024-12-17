@@ -4,6 +4,8 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Text;
 using DataProvider;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace DataAccess
 {
@@ -22,14 +24,17 @@ namespace DataAccess
                 DataTable dt = dh.ReadData("[usp_LoginUser_Validation]", parm, CommandType.StoredProcedure);
 
                 SelectLoginInfo sli = new SelectLoginInfo();
-
+                sli.Role = dt.Rows[0]["Type"].ToString();
                 sli.TokenNo = dt.Rows[0]["Token"].ToString();
                 sli.Status = Int32.Parse(dt.Rows[0]["StatusCode"].ToString());
                 sli.Message = dt.Rows[0]["Message"].ToString();
                 sli.Type= dt.Rows[0]["Type"].ToString();
                 sli.landingPage = dt.Rows[0]["landingPage"].ToString();
+                sli.Id = Convert.ToInt32(dt.Rows[0]["Id"]);
                 //sli.Id = dt.Rows[0]["Id"].ToString();
                 sli.UserName = dt.Rows[0]["UserName"].ToString();
+               // sli.Secret = dt.Rows[0]["Secret"].ToString();
+
                 return sli;
             }
             catch (Exception ex)
@@ -37,6 +42,57 @@ namespace DataAccess
                 throw ex;
             }
         }
+
+
+
+
+
+
+
+
+
+
+        public SelectLoginInfo GetUserValidationWithExternalLink(LoginValidator lv)
+        {
+            try
+            {
+           
+
+                
+
+                SqlParameter[] parm = {
+                    new SqlParameter("@CustomerSubscriptionGuid",lv.CustomerSubscriptionGuid)
+                };
+
+
+
+
+                DataTable dt = dh.ReadData("[usp_LoginUser_Validation_ExternalLink]", parm, CommandType.StoredProcedure);
+
+                SelectLoginInfo sli = new SelectLoginInfo();
+
+                sli.TokenNo = dt.Rows[0]["Token"].ToString();
+                sli.Status = Int32.Parse(dt.Rows[0]["StatusCode"].ToString());
+                sli.Message = dt.Rows[0]["Message"].ToString();
+                sli.Type = dt.Rows[0]["Type"].ToString();
+                sli.landingPage = dt.Rows[0]["landingPage"].ToString();
+                //sli.Id = dt.Rows[0]["Id"].ToString();
+                sli.UserName = dt.Rows[0]["UserName"].ToString();
+                sli.Customer = Convert.ToInt32(dt.Rows[0]["Customer"]);
+                sli.Product = Convert.ToInt32(dt.Rows[0]["Product"]);
+
+
+                return sli;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
 
         public SelectLoginInfo GetAdminValidation(LoginValidator lv)
         {

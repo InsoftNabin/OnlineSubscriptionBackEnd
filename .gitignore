@@ -17,6 +17,20 @@ OnlineSubscriptionBackEnd/obj
 
 # Log files
 *.log
+# Ignore obj and bin directories (common build artifacts)
+**/obj/
+**/bin/
+
+# Ignore Visual Studio temporary and cache files
+.vs/
+*.cache
+*.suo
+*.user
+*.pdb
+*.dll
+
+# Ignore specific files
+OnlineSubscriptionBackEnd/Properties/PublishProfiles/FolderProfile.pubxml.user
 
 # Package files
 *.jar
