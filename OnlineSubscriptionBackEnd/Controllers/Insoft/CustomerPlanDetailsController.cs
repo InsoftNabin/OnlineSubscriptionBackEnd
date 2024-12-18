@@ -72,7 +72,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                             MachineKey = ai.Machinekey
                         };
 
-                        var requestLicenseKey = new GenerateKeyController().ProduceValidityKey(sp);
+                        var requestLicenseKey = new GenerateKeyController().ProduceValidityKeyInitial(sp);
 
                         if (requestLicenseKey is OkObjectResult okResult2)
                         {
@@ -80,7 +80,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                             if (result != null)
                             {
 
-                                licenseKey = result.ValidityKey?.ToString();
+                                licenseKey = result.ToString();
 
 
                                 if (!string.IsNullOrEmpty(licenseKey))
