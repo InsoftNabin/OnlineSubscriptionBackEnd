@@ -33,7 +33,8 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                         new SqlParameter("@Id",ai.Id),
                         new SqlParameter("@Name",ai.Name),
                         new SqlParameter("@NoOfMonths",ai.NoOfMonths),
-                        new SqlParameter("@IsPaidBased",ai.IsPaidBased)
+                        new SqlParameter("@IsPaidBased",ai.IsPaidBased),
+                        new SqlParameter("@IsTrial",ai.IsTrial)
                     };
                 AffectedRows = AffectedRows + dh.InsertUpdate("[Insoft_IU_SubType]", parm, CommandType.StoredProcedure);
                 return Json(AffectedRows);
