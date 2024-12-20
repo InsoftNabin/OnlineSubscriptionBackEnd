@@ -198,7 +198,10 @@ namespace OnlineSubscriptionBackEnd.Controllers
                     UniqueMachineKey = UniqueMachineKey, 
                     Message = statusMessage,
                     ExpirationDate = formattedExpirationDate,
-                    RemainingDays = remainingDays
+                    RemainingDays = remainingDays,
+                    ExternalLink= "https://subscription.insoftnepal.com/Home/External?CustomerSubcriptionGuid=" +clientKey+ "&MachineKey="+ UniqueMachineKey
+                   //ExternalLink = "https://localhost:44392/Home/External?CustomerSubcriptionGuid=" + clientKey + "&MachineKey=" + UniqueMachineKey
+
                 });
             }
             catch (Exception ex)

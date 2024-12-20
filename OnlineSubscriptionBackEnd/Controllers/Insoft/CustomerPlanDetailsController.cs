@@ -152,10 +152,6 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 }
 
 
-
-
-
-
                 SqlParameter[] parm1 = {
                         new SqlParameter("@CustomerId",ai.CustomerId),
                         new SqlParameter("@ProductId",ai.ProductId),
