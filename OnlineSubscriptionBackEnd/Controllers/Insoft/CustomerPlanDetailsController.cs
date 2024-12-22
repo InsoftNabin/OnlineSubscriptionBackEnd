@@ -198,6 +198,25 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 throw ex;
             }
         }
+        [HttpPost]
+        public ActionResult GetVoucherEntryStatus([FromBody] CustomerPlan p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    
+                    new SqlParameter("@CustomerId",p.CustomerId),
+                    new SqlParameter("@ProductId",p.ProductId)
+
+                };
+                string data = dh.ReadToJson("[Insoft_S_ExistingVoucherStatus]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
         [HttpPost]
