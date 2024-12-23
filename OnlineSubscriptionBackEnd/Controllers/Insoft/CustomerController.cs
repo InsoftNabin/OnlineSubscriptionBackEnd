@@ -352,30 +352,6 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             }
         }
 
-
-
-
-        [HttpPost]
-        public ActionResult getSubsbyCusandProductIdWithUnpaidType([FromBody] CustomerwiseModules p)
-        {
-            try
-            {
-                SqlParameter[] parm = {
-                    //new SqlParameter("@Id",p.Id),
-                    new SqlParameter("@ProductId",p.ProductId),
-                    new SqlParameter("@CustomerId",p.CustomerId),
-                };
-                string data = dh.ReadToJson("[Insoft_S_CustomerandProductSubscriptionTypeWithUnpaidType]", parm, CommandType.StoredProcedure);
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-
         [HttpPost]
         public ActionResult DeleteCustomer([FromBody] Customer p)
         {

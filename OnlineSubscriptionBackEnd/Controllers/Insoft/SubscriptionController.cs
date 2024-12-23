@@ -11,10 +11,7 @@ using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Http;
 using OnlineSubscriptionBackEnd.Model;
 using System.Text;
-<<<<<<< HEAD
-=======
 
->>>>>>> a77e09023a508f4849dfa1f9682eb58b066a53e2
 
 namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 {
@@ -36,12 +33,8 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                         new SqlParameter("@Id",ai.Id),
                         new SqlParameter("@Name",ai.Name),
                         new SqlParameter("@NoOfMonths",ai.NoOfMonths),
-<<<<<<< HEAD
-                        new SqlParameter("@IsPaidBased",ai.IsPaidBased)
-=======
                         new SqlParameter("@IsPaidBased",ai.IsPaidBased),
                         new SqlParameter("@IsTrial",ai.IsTrial)
->>>>>>> a77e09023a508f4849dfa1f9682eb58b066a53e2
                     };
                 AffectedRows = AffectedRows + dh.InsertUpdate("[Insoft_IU_SubType]", parm, CommandType.StoredProcedure);
                 return Json(AffectedRows);
@@ -230,23 +223,6 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
 
 
-<<<<<<< HEAD
-        [HttpPost]
-        public IActionResult ValidateSubscription([FromBody] ApiRequest ar /*string TokenNo,int Program,int Semester,int Sec,string SubjectCode, int TermId*/)
-        {
-            try
-            {
-                StringBuilder Sb = new StringBuilder();
-                var jsonstring = "";
-                DataTable dt = new DataTable();
-
-                SqlParameter[] parm =
-                {
-                    new SqlParameter("@CustomerId",ar.CustomerId),
-                    new SqlParameter("@ProductId",ar.ProductId)
-                };
-
-=======
         //[HttpPost]
         //public IActionResult ValidateSubscription([FromBody] ApiRequest ar /*string TokenNo,int Program,int Semester,int Sec,string SubjectCode, int TermId*/)
         //{
@@ -410,42 +386,11 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
         {
             try
             {
->>>>>>> a77e09023a508f4849dfa1f9682eb58b066a53e2
                 string data = dh.ReadToJson("[Insoft_S_ValidateSubscription]", parm, CommandType.StoredProcedure);
 
                 List<SubscriptionResponse> student = JsonConvert.DeserializeObject<List<SubscriptionResponse>>(data);
                 if (student.Count > 0)
                 {
-<<<<<<< HEAD
-                    if (student[0].Status == "200")
-                    {
-
-                        ResponceModel rm = new ResponceModel
-                        {
-                            message = student[0].Message,
-                            status = Int32.Parse(student[0].Status),
-                            data = student
-                        };
-                        return StatusCode(StatusCodes.Status200OK, rm);
-                    }
-                    else {
-                        ResponceModel rm = new ResponceModel
-                        {
-                            message = student[0].Message,
-                            status = Int32.Parse(student[0].Status),
-                            data = student
-                        };
-                        return StatusCode(StatusCodes.Status200OK, rm);
-                    }
-                }
-                else
-                {
-                    Sb.Append("{\"status\":404,\"message\":\"Data not found\"}");
-                    jsonstring = Sb.ToString();
-                    JObject myObj = (JObject)JsonConvert.DeserializeObject(jsonstring);
-                    //return Json(myObj);
-                    return StatusCode(StatusCodes.Status404NotFound, myObj);
-=======
                     var subscription = student[0];
                     ResponceModel rm = new ResponceModel
                     {
@@ -461,17 +406,10 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 else
                 {
                     return NotFound(new { Status = "404", Message = "Data not found." });
->>>>>>> a77e09023a508f4849dfa1f9682eb58b066a53e2
                 }
             }
             catch (Exception ex)
             {
-<<<<<<< HEAD
-                ResponceModel rm = new ResponceModel();
-                rm.status = 417;
-                rm.message = ex.ToString();
-                return StatusCode(StatusCodes.Status417ExpectationFailed, rm);
-=======
                 return StatusCode(StatusCodes.Status500InternalServerError, new { Message = "Failed to fetch subscription details.", Error = ex.Message });
             }
         }
@@ -506,7 +444,6 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new { Message = "Failed to fetch subscription details.", Error = ex.Message });
->>>>>>> a77e09023a508f4849dfa1f9682eb58b066a53e2
             }
         }
 
