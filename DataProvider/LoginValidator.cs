@@ -8,5 +8,9 @@ namespace DataProvider
     {
         public string UserName { get; set; }
         public string Password { get; set; }
+        public string CustomerSubscriptionGuid { get; set; }
+        public string MachineKey { get; set; }
+        public int Customer { get; set; }
+        public int Product { get; set; }
     }
 }

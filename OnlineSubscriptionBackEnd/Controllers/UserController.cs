@@ -8,12 +8,15 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using DataProvider;
 using System.Collections.Generic;
+using OnlineSubscriptionBackEnd.Model.Insoft;
 
 namespace OnlineSubscriptionBackEnd.Controllers
 {
     public class UserController : Controller
     {
         DataHandeler dh = new DataHandeler();
+        GenerateKeyController gk = new GenerateKeyController();
+
         [HttpPost]
         public JsonResult Register([FromBody] UserInfo em)
         {
@@ -87,6 +90,25 @@ namespace OnlineSubscriptionBackEnd.Controllers
                 throw ex;
             }
         }
+
+        [HttpPost]
+        public ActionResult GetUnverifiedOrganizations([FromBody] string TokenNo)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@TokenNo",TokenNo)
+                };
+                string data = dh.ReadToJson("[asp_Admin_getUnverifiedOrg]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         [HttpPost]
         public JsonResult GetOrganizationsById([FromBody] OrgDetails em)
         {
@@ -198,11 +220,41 @@ namespace OnlineSubscriptionBackEnd.Controllers
             }
         }
 
+
+
+        [HttpPost]
+        public JsonResult getCusProdIdByToken([FromBody] UpdateOrg OD)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@TokenNo", OD.TokenNo),
+                    new SqlParameter("@Id", OD.Token)
+                };
+                string Block = dh.ReadToJson("Usp_S_CUSTOMERPRoductbyToken", parm, CommandType.StoredProcedure);
+                return Json(Block);
+               
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
         [HttpPost]
         public JsonResult UpdateOrgdetailsByAdmin([FromBody] UpdateOrg OD)
         {
             try
             {
+                string productKey = null;
+                string customerKey = null;
+                string licenseKey = null;
+
+
+                //----------------------30 days free trial for each------------
                 SqlParameter[] parm = {
                     new SqlParameter("@TokenNo", OD.TokenNo),
                     new SqlParameter("@Id", OD.Token),
@@ -212,6 +264,59 @@ namespace OnlineSubscriptionBackEnd.Controllers
                     new SqlParameter("@Remarks", OD.Remarks),
                 };
                 int Block = dh.Update("Usp_U_OrgdetailsByAdmin", parm, CommandType.StoredProcedure);
+                //return Json(Block);
+
+                //------------done 30days up without subs GUID and licenseKey----------------------------
+            
+                SqlParameter[] parm1 = {
+                    new SqlParameter("@TokenNo", OD.TokenNo),
+                    new SqlParameter("@Id", OD.Token)
+                };
+                string resoponse = dh.ReadToJson("[Usp_S_custandProdforvalidityInitially]", parm1, CommandType.StoredProcedure);     //---------273,49
+               var resp=JsonConvert.DeserializeObject<List<ValidityKey>>(resoponse);
+
+                productKey = resp[0].ProductKey;
+               var custid = resp[0].ClientKey;
+               var ExpiryDate = resp[0].ExpiryDate;
+
+                Customer cs=new Customer { GUID=custid };
+                var responseCustomerKey = gk.ProduceCustomerKey(cs);
+                if (responseCustomerKey is OkObjectResult okResult)
+                {
+                    customerKey = okResult.Value?.ToString();
+                }
+                else
+                {
+                    throw new Exception("Failed to generate CustomerKey. Invalid response type.");
+                }
+                // --------------------------------------------Create LicenseKey with existing keys-----------------------------------------
+                SubProduct sp = new SubProduct
+                {
+                    ProductGUID = productKey,
+                    clientGUID = customerKey,
+                    ExpiryDate = ExpiryDate
+                };
+
+                var requestLicenseKey = new GenerateKeyController().ProduceValidityKeyInitial(sp);
+                if (requestLicenseKey is OkObjectResult okResult2)
+                {
+                    licenseKey = okResult2.Value?.ToString();
+                }
+                else
+                {
+                    throw new Exception("Failed to generate LicenseKey. Invalid response type.");
+                }
+                //--------------------------- Insert or update in the database----------------------------
+
+                SqlParameter[] parmfinal = { 
+                new SqlParameter("@CustomerId",custid),
+                new SqlParameter("@ProductGUID",productKey),
+                new SqlParameter("@ValidityKey",customerKey),
+                new SqlParameter("@LicenseKey",licenseKey)
+                };
+
+
+                int AffectedRows = dh.InsertUpdate("[Insoft_IU_UpdatesubAndLicenseKeyAfterVerify]", parmfinal, CommandType.StoredProcedure);
                 return Json(Block);
 
             }
@@ -228,7 +333,8 @@ namespace OnlineSubscriptionBackEnd.Controllers
             {
                 SqlParameter[] parm = {
                     new SqlParameter("@TokenNo", OD.TokenNo),
-                    new SqlParameter("@Id", OD.Token)
+                    new SqlParameter("@Id", OD.Token),
+                    new SqlParameter("@Remarks",OD.Remarks)
                 };
                 int Block = dh.Update("Usp_D_Orgdetails", parm, CommandType.StoredProcedure);
                 return Json(Block);

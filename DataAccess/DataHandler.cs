@@ -12,8 +12,11 @@ namespace DataAccess
 {
     public class DataHandeler
     {
-        //public string _connectionString = "Server=DESKTOP-Q33RBL2\\INSOFTDATA22; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";
-        public string _connectionString = "Server=202.51.74.37,1435; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";
+       // public string _connectionString = "Server=DESKTOP-Q33RBL2\\INSOFTDATA22; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";
+        
+       // public string _connectionString = "Server=202.51.74.37,1435; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";  //nabin dai
+
+      public string _connectionString = "Server=202.166.211.166,3637; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";   //ankit poudel server
 
         public string ByToken(string TokenNo)
         {
@@ -335,6 +338,72 @@ namespace DataAccess
                 }
             }
         }
+
+
+
+        public string ReadToJsonSMS(string sql, SqlParameter[] parm, CommandType cmdType, string connString)
+        {
+            SqlConnection con = new SqlConnection(connString);
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = con;
+                    cmd.CommandType = cmdType;
+                    cmd.CommandText = sql;
+                    cmd.CommandTimeout = 0;
+                    if (parm != null)
+                    {
+                        cmd.Parameters.AddRange(parm);
+                    }
+                    // await con.OpenAsync();
+                    con.Open();
+                    IDataReader reader = cmd.ExecuteReader();
+                    StringBuilder sb = new StringBuilder();
+                    StringWriter sw = new StringWriter(sb);
+
+                    using (JsonWriter jsonWriter = new JsonTextWriter(sw))
+                    {
+                        jsonWriter.WriteStartArray();
+
+                        while (reader.Read())
+                        {
+                            jsonWriter.WriteStartObject();
+
+                            int fields = reader.FieldCount;
+
+                            for (int i = 0; i < fields; i++)
+                            {
+                                jsonWriter.WritePropertyName(reader.GetName(i));
+                                if (reader[i] == System.DBNull.Value)
+                                {
+                                    jsonWriter.WriteValue("");
+                                }
+                                else
+                                {
+                                    jsonWriter.WriteValue(reader[i]);
+                                }
+                            }
+                            jsonWriter.WriteEndObject();
+                        }
+                        jsonWriter.WriteEndArray();
+                        cmd.Parameters.Clear();
+                        return sw.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+        }
+
+
+
 
         //---------------------------readdata selected data in Json----------------
         //  public async Task<string> ReadToJson(string sql, SqlParameter[] parm, CommandType cmdType)

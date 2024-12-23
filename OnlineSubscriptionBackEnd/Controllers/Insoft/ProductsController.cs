@@ -22,25 +22,42 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
         {
             try
             {
+                GenerateKeyController gk = new GenerateKeyController();
+                var result = gk.ProduceProductKey();
+
+                string productKey = null;
+                if (result is OkObjectResult okResult)
+                {
+                    productKey = okResult.Value?.ToString(); 
+                }
+                else
+                {
+                    throw new Exception("Failed to generate ProductKey. Invalid response type.");
+                }
+
                 int AffectedRows = 0;
-                //string conn = "";
-                //conn = dh.ByToken(ai.TokenNo);
-                SqlParameter[] parm = {
-                        //new SqlParameter("@TokenNo",ai.TokenNo),
-                        new SqlParameter("@Id",ai.Id),
-                        new SqlParameter("@Name",ai.Name),
-                        new SqlParameter("@Description",ai.Description),
-                        new SqlParameter("@Version",ai.Version)
+
+                   SqlParameter[] parm = {
+                        new SqlParameter("@Id", ai.Id),
+                        new SqlParameter("@Name", ai.Name),
+                        new SqlParameter("@Description", ai.Description),
+                        new SqlParameter("@Version", ai.Version),
+                        new SqlParameter("@siteURL",ai.siteURL),
+                        new SqlParameter("@ProductKey", productKey) ,
+                        new SqlParameter("@Type",ai.Type)
                     };
-                AffectedRows = AffectedRows + dh.InsertUpdate("[Insoft_IU_Product]", parm, CommandType.StoredProcedure);
+
+                AffectedRows += dh.InsertUpdate("[Insoft_IU_Product]", parm, CommandType.StoredProcedure);
                 return Json(AffectedRows);
             }
             catch (Exception ex)
             {
-                throw ex;
+                // Return a proper error response
+                return Json(new { success = false, message = ex.Message });
             }
         }
-        
+
+
 
 
         [HttpPost]
@@ -78,8 +95,30 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 throw ex;
             }
         }
-       
-        
+
+
+
+        [HttpPost]
+        public ActionResult GetAllProductsByCustomer([FromBody] CustomerwiseModules p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+
+                    new SqlParameter("@TokenNo",p.TokenNo),
+                    new SqlParameter("@CustomerCode",p.CustomerId)
+                };
+                string data = dh.ReadToJson("[Insoft_S_GetAllProductsByCustomer]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
         [HttpPost]
         public ActionResult DeleteProduct([FromBody] Products p)
         {
