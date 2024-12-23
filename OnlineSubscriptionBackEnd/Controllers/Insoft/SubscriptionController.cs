@@ -8,7 +8,9 @@ using System;
 using OnlineSubscriptionBackEnd.Model.Insoft;
 
 using Newtonsoft.Json.Linq;
-
+using Microsoft.AspNetCore.Http;
+using OnlineSubscriptionBackEnd.Model;
+using System.Text;
 
 namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 {
@@ -29,7 +31,8 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                         //new SqlParameter("@TokenNo",ai.TokenNo),
                         new SqlParameter("@Id",ai.Id),
                         new SqlParameter("@Name",ai.Name),
-                        new SqlParameter("@NoOfMonths",ai.NoOfMonths)
+                        new SqlParameter("@NoOfMonths",ai.NoOfMonths),
+                        new SqlParameter("@IsPaidBased",ai.IsPaidBased)
                     };
                 AffectedRows = AffectedRows + dh.InsertUpdate("[Insoft_IU_SubType]", parm, CommandType.StoredProcedure);
                 return Json(AffectedRows);
@@ -147,6 +150,71 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 throw ex;
             }
         }
+
+
+
+
+
+        [HttpPost]
+        public IActionResult ValidateSubscription([FromBody] ApiRequest ar /*string TokenNo,int Program,int Semester,int Sec,string SubjectCode, int TermId*/)
+        {
+            try
+            {
+                StringBuilder Sb = new StringBuilder();
+                var jsonstring = "";
+                DataTable dt = new DataTable();
+
+                SqlParameter[] parm =
+                {
+                    new SqlParameter("@CustomerId",ar.CustomerId),
+                    new SqlParameter("@ProductId",ar.ProductId)
+                };
+
+                string data = dh.ReadToJson("[Insoft_S_ValidateSubscription]", parm, CommandType.StoredProcedure);
+
+                List<SubscriptionResponse> student = JsonConvert.DeserializeObject<List<SubscriptionResponse>>(data);
+                if (student.Count > 0)
+                {
+                    if (student[0].Status == "200")
+                    {
+
+                        ResponceModel rm = new ResponceModel
+                        {
+                            message = student[0].Message,
+                            status = Int32.Parse(student[0].Status),
+                            data = student
+                        };
+                        return StatusCode(StatusCodes.Status200OK, rm);
+                    }
+                    else {
+                        ResponceModel rm = new ResponceModel
+                        {
+                            message = student[0].Message,
+                            status = Int32.Parse(student[0].Status),
+                            data = student
+                        };
+                        return StatusCode(StatusCodes.Status200OK, rm);
+                    }
+                }
+                else
+                {
+                    Sb.Append("{\"status\":404,\"message\":\"Data not found\"}");
+                    jsonstring = Sb.ToString();
+                    JObject myObj = (JObject)JsonConvert.DeserializeObject(jsonstring);
+                    //return Json(myObj);
+                    return StatusCode(StatusCodes.Status404NotFound, myObj);
+                }
+            }
+            catch (Exception ex)
+            {
+                ResponceModel rm = new ResponceModel();
+                rm.status = 417;
+                rm.message = ex.ToString();
+                return StatusCode(StatusCodes.Status417ExpectationFailed, rm);
+            }
+        }
+
+
 
 
     }
