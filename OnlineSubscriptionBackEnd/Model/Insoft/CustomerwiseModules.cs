@@ -12,7 +12,8 @@ namespace OnlineSubscriptionBackEnd.Model.Insoft
             public int ProductId { get; set; }
             public float TotalPrice { get; set; }
             public int AgentId { get; set; }
-            public string Initial { get; set; }
+        public int IsPaidBased { get; set; }
+        public string Initial { get; set; }
         public string LatestLicenseKey { get; set; }
         public string MachineKey { get; set; }
         public string SerialNumber { get; set; }

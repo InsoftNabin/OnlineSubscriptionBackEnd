@@ -8,6 +8,7 @@
         public  int CustomerId { get; set; }
         public  string DisplayName { get; set; }
         public  string Initial { get; set; }
+        public int OrgId { get; set; }
         public  string PanVatNo { get; set; }
         public  string Address { get; set; }
         public  string PhoneNo { get; set; }
