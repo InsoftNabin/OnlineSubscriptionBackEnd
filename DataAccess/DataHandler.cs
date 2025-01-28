@@ -14,9 +14,9 @@ namespace DataAccess
     {
        // public string _connectionString = "Server=DESKTOP-Q33RBL2\\INSOFTDATA22; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";
         
-        public string _connectionString = "Server=202.51.74.37,1435; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";  //nabin dai
+     public string _connectionString = "Server=202.51.74.37,1435; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";  //nabin dai
 
-     // public string _connectionString = "Server=202.166.211.166,3637; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";   //ankit poudel server
+     //public string _connectionString = "Server=202.166.211.166,3637; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";   //ankit poudel server
 
         public string ByToken(string TokenNo)
         {
