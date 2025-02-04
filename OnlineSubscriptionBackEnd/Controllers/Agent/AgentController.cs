@@ -77,6 +77,50 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
 
         [HttpPost]
+        public JsonResult StoreOTPBeforeLogin([FromBody] Agent ai)
+        {
+            try
+            {
+                int AffectedRows = 0;
+                //string conn = "";
+                //conn = dh.ByToken(ai.TokenNo);
+                SqlParameter[] parm = {
+                        new SqlParameter("@TokenNo",ai.TokenNo),
+                        new SqlParameter("@SessionToken",ai.SessionToken),
+                        new SqlParameter("@OTP",ai.OTP)
+                    };
+                AffectedRows = AffectedRows + dh.InsertUpdate("[usp_LoginAgent_StoreOTPBeforeLogin]", parm, CommandType.StoredProcedure);
+                return Json(AffectedRows);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        [HttpPost]
+        public ActionResult CheckOTP([FromBody] Agent ai)
+        {
+            try
+            {
+                int AffectedRows = 0;
+                //string conn = "";
+                //conn = dh.ByToken(ai.TokenNo);
+                SqlParameter[] parm = {
+                        new SqlParameter("@TokenNo",ai.TokenNo),
+                        new SqlParameter("@SessionToken",ai.SessionToken),
+                        new SqlParameter("@OTP",ai.OTP)
+                    };
+                string data = dh.ReadToJson("[usp_LoginAgent_CheckOtpBeforeLogin]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        [HttpPost]
         public ActionResult getAgentByToken([FromBody] Agent p)
         {
             try

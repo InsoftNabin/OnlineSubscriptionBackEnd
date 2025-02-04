@@ -33,6 +33,8 @@ namespace DataAccess
                 sli.Id = Convert.ToInt32(dt.Rows[0]["Id"]);
                 //sli.Id = dt.Rows[0]["Id"].ToString();
                 sli.UserName = dt.Rows[0]["UserName"].ToString();
+                sli.PhoneNo = dt.Rows[0]["ContactNo"].ToString();
+                sli.Email = dt.Rows[0]["Email"].ToString();
                // sli.Secret = dt.Rows[0]["Secret"].ToString();
 
                 return sli;
