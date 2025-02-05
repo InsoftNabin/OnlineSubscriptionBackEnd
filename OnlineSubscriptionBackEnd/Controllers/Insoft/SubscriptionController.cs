@@ -118,12 +118,14 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
 
         [HttpPost]
-        public ActionResult getVouchersForVerification([FromBody] string TokenNo)
+        public ActionResult getVouchersForVerification([FromBody] AllActivites aa )
         {
             try
             {
                 SqlParameter[] parm = {
-                    new SqlParameter("@TokenNo",TokenNo)
+                    new SqlParameter("@TokenNo",aa.TokenNo),
+                    new SqlParameter("@Product",aa.Product),
+                    new SqlParameter("@PaymentMode",aa.PaymentMode)
                 };
                 string data = dh.ReadToJson("[Insoft_S_GetAllVouchersForVerification]", parm, CommandType.StoredProcedure);
                 return Ok(data);
