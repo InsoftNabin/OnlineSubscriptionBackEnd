@@ -19,6 +19,7 @@
         public string Type { get; set; }
         public string UserId { get; set; }
         public string Password { get; set; }
+        public int Country { get; set; }
         public bool Active { get; set; }
         public string SessionToken { get; set; }
         public string OTP { get; set; }

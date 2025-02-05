@@ -62,7 +62,8 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                         new SqlParameter("@SMSSenderId",ai.SMSSenderId),
                         new SqlParameter("@Type",ai.Type),
                         new SqlParameter("@UserId",ai.UserId),
-                        new SqlParameter("@Password",ai.@Password)
+                        new SqlParameter("@Password",ai.@Password),
+                        new SqlParameter("@Country",ai.Country)
                         
                         
                     };
