@@ -141,7 +141,7 @@ namespace OnlineSubscriptionBackEnd.Controllers
                 var (productKey, clientKey, uniqueMachineKey, decodedExpirationDate) = LicenseGenerator.DecodeValidityKey(validityKey);
 
                 // Calculate remaining days
-                int remainingDays = (decodedExpirationDate - DateTime.Now).Days;
+                int remainingDays = (decodedExpirationDate - DateTime.Now.Date).Days;
                 string formattedExpirationDate = decodedExpirationDate.ToString("yyyy/MM/dd");
                 string statusMessage = remainingDays > 0 ? "Valid Subscription" : "Expired Subscription";
                 int statusCode = remainingDays > 0 ? 1 : 0;
