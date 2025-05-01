@@ -1,4 +1,5 @@
 ﻿using DataProvider;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,16 @@ namespace DataAccess
 {
     public class DataHandeler
     {
-       // public string _connectionString = "Server=DESKTOP-Q33RBL2\\INSOFTDATA22; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";
-        
-     public string _connectionString = "Server=202.51.74.37,1435; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";  //nabin dai
+		// "Server=202.51.74.44,3694; Database=OnlineSubscription; user Id=insoftadmin; Password=!nsoft@dmin#2025Vm@KTM"
+		// public string _connectionString = Startup.connectiontring;
 
-    // public string _connectionString = "Server=202.166.211.166,3637; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";   //ankit poudel server
+		//public string _connectionString = "Server=202.166.211.166,3637; Database=OnlineSubscription; user Id=sa; Password=L@xmir1n1";   //ankit poudel server
 
-        public string ByToken(string TokenNo)
+		//public string _connectionString = "Server=202.51.74.44,3694; Database=OnlineSubscription; user Id=insoftadmin; Password=!nsoft@dmin#2025Vm@KTM";
+
+		public string _connectionString = "Server=202.51.74.37,3694; Database=OnlineSubscription; user Id=insoftadmin; Password=!nsoft@dmin#2025Vm@KTM";
+
+		public string ByToken(string TokenNo)
         {
             SqlConnection conn = new SqlConnection(this._connectionString);
             try

@@ -29,6 +29,7 @@ namespace OnlineSubscriptionBackEnd
         {
             services.AddControllers();
             connectiontring = Configuration.GetConnectionString("DefaultConnection");
+
             services.AddMvc();
             services.AddCors(options =>
             {
