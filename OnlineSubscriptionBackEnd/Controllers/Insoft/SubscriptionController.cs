@@ -56,7 +56,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                     SqlParameter[] parm = {
                 new SqlParameter("@CustomerId", item.CustomerId),
                 new SqlParameter("@ProductId", item.ProductId),
-                new SqlParameter("@SubscriptionType", item.AgentId), 
+                new SqlParameter("@SubscriptionType", item.AgentId),
                 new SqlParameter("@Active", item.Active)
                      };
 
@@ -67,7 +67,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             }
             catch (Exception ex)
             {
-               
+
                 return Json(new { success = false, message = ex.Message });
             }
         }
@@ -79,7 +79,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             {
                 int affectedRows = 0;
 
-               
+
                 SqlParameter[] parm = {
             new SqlParameter("@CustomerId", item.CustomerId),
             new SqlParameter("@ProductId", item.ProductId),
@@ -87,7 +87,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             new SqlParameter("@Active", item.Active)
         };
 
-                
+
                 affectedRows = dh.InsertUpdate("[Insoft_IU_CustomerandProductSubscriptionTypeInitial]", parm, CommandType.StoredProcedure);
                 return Json(new { success = true, affectedRows });
             }
@@ -118,7 +118,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
 
         [HttpPost]
-        public ActionResult getVouchersForVerification([FromBody] AllActivites aa )
+        public ActionResult getVouchersForVerification([FromBody] AllActivites aa)
         {
             try
             {
@@ -181,9 +181,40 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             }
         }
 
+        [HttpPost]
+        public ActionResult GetSerialKeyLog([FromBody] CustomerPlan p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@ProductId",p.ProductId),
+                    new SqlParameter ("@CustomerId",p.CustomerId)
+                };
+                string data = dh.ReadToJson("[Insoft_s_serialkeys]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-
-
+        [HttpPost]
+        public ActionResult Getcustomerbyskey([FromBody] SerialKey p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@subkeytype",p.SKey),
+                };
+                string data = dh.ReadToJson("[Insoft_s_customerbyserialkey]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         [HttpPost]
         public ActionResult getSubscriptionById([FromBody] Subscription p)
         {
@@ -306,7 +337,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
         {
             try
             {
-                SqlParameter[] parm; 
+                SqlParameter[] parm;
 
                 if (!string.IsNullOrEmpty(ar.UniqueMachineCode))
                 {
@@ -354,25 +385,25 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                     //    var decodedData = okResult.Value;
                     //    var vk = JsonConvert.DeserializeObject<ValidityKey>(JsonConvert.SerializeObject(decodedData));
 
-                        //SqlParameter[] parm =
-                        //{
-                        //     new SqlParameter("@CustomerId",vk.ProductKey ),
-                        //     new SqlParameter("@ProductId", vk.ClientKey),
-                        //     new SqlParameter("@UniqueMachineKey", ar.UniqueMachineCode)
-                        //};
+                    //SqlParameter[] parm =
+                    //{
+                    //     new SqlParameter("@CustomerId",vk.ProductKey ),
+                    //     new SqlParameter("@ProductId", vk.ClientKey),
+                    //     new SqlParameter("@UniqueMachineKey", ar.UniqueMachineCode)
+                    //};
 
-                        SqlParameter[] parm =
-                        {
+                    SqlParameter[] parm =
+                    {
                             new SqlParameter("@SubscriptionGUID", ar.subscriptionGUID)
                         };
 
 
-                        return FetchSubscriptionDetails(parm);
-                    }
-                    else
-                    {
-                        return BadRequest(new { Status = "400", Message = "Failed to decode validity key." });
-                    }
+                    return FetchSubscriptionDetails(parm);
+                }
+                else
+                {
+                    return BadRequest(new { Status = "400", Message = "Failed to decode validity key." });
+                }
             }
             catch (Exception ex)
             {

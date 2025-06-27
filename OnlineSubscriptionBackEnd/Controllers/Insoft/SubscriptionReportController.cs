@@ -32,6 +32,25 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
         }
 
         [HttpPost]
+        public ActionResult GetAgentReport([FromBody] Customer sr)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                   new SqlParameter("@TokenNo",sr.TokenNo),
+                   new SqlParameter ("@productid",sr.ProductId),
+                   new SqlParameter("@Agentid",sr.AgentId)
+                };
+                string data = dh.ReadToJson("[Insoft_s_Agentreport]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
         public ActionResult getCustomerStatement([FromBody] Customer sr)
         {
             try

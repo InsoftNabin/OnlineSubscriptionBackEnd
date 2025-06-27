@@ -21,7 +21,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
                 GenerateKeyController gk = new GenerateKeyController();
 
-                var result= gk.ProduceProductKey();
+                var result = gk.ProduceProductKey();
 
                 string Key = null;
                 if (result is OkObjectResult okResult)
@@ -31,7 +31,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 }
 
                 var responseCustomerKey = gk.ProduceCustomerKey(ai);
-           
+
                 string CtKey = null;
                 if (responseCustomerKey is OkObjectResult okResult1)
                 {
@@ -75,6 +75,50 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 throw ex;
             }
         }
+
+        [HttpPost]
+        public JsonResult InsertUpdateSerialkEY([FromBody] SerialKey ai)
+        {
+            try
+            {
+                int AffectedRows = 0;
+                SqlParameter[] parm = {
+                        new SqlParameter("@customercode",ai.CustomerID),
+                        new SqlParameter("@productkey",ai.productKey),
+                        new SqlParameter("@serialkey",ai.SKey),
+                        new SqlParameter("@remarks",ai.Remarks),
+                        new SqlParameter("@expirydate",ai.ExpiryDate)
+                    };
+                AffectedRows = AffectedRows + dh.InsertUpdate("[Insoft_IU_CustomersERIALkEY]", parm, CommandType.StoredProcedure);
+                return Json(AffectedRows);
+            }
+            catch (Exception EX)
+            {
+                throw EX;
+
+            }
+        }
+
+
+        [HttpPost]
+        public JsonResult DeleteSerialKey([FromBody] SerialKey ai)
+        {
+            try
+            {
+                int AffectedRows = 0;
+                SqlParameter[] parm = {
+                        new SqlParameter("@serialkey",ai.productKey)
+                    };
+                AffectedRows = AffectedRows + dh.InsertUpdate("[Insoft_D_serialkeys]", parm, CommandType.StoredProcedure);
+                return Json(AffectedRows);
+            }
+            catch (Exception EX)
+            {
+                throw EX;
+
+            }
+        }
+
 
 
 
@@ -193,7 +237,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             try
             {
                 SqlParameter[] parm = {
-                    new SqlParameter("@Ukid",id.unqId) 
+                    new SqlParameter("@Ukid",id.unqId)
                 };
                 string data = dh.ReadToJson("[Customer_S_LogForPrint]", parm, CommandType.StoredProcedure);
                 return Ok(data);

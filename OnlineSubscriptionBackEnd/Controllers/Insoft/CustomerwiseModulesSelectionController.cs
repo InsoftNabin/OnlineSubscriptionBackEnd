@@ -72,7 +72,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                                 ProductGUID = productKey,
                                 clientGUID = customerKey,
                                 ExpiryDate = subProduct.ExpiryDate,
-                                MachineKey=ai.MachineKey
+                                MachineKey = ai.MachineKey
                             };
 
                             var requestLicenseKey = new GenerateKeyController().ProduceValidityKey(sp);
@@ -169,6 +169,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 new SqlParameter("@MonthlyCharge", subProduct.MonthlyCharge),
                 new SqlParameter("@SerialNumber", ai.SerialNumber),
                 new SqlParameter("@SiteURL", ai.SiteURL),
+                 new SqlParameter("@Sukey", ai.Sukey),
                 new SqlParameter("@Remarks", subProduct.Remarks),
                 new SqlParameter("@Plan", subProduct.Plan),
                 new SqlParameter("@TotalPrice", ai.TotalPrice),
@@ -207,7 +208,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
         [HttpPost]
         public ActionResult getCustomerwiseModulesById([FromBody] CustomerwiseModules p)
-          {
+        {
             try
             {
                 SqlParameter[] parm = {
