@@ -28,7 +28,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 string productKey = null;
                 if (result is OkObjectResult okResult)
                 {
-                    productKey = okResult.Value?.ToString(); 
+                    productKey = okResult.Value?.ToString();
                 }
                 else
                 {
@@ -37,7 +37,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
                 int AffectedRows = 0;
 
-                   SqlParameter[] parm = {
+                SqlParameter[] parm = {
                         new SqlParameter("@Id", ai.Id),
                         new SqlParameter("@Name", ai.Name),
                         new SqlParameter("@Description", ai.Description),
@@ -61,7 +61,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
 
 
         [HttpPost]
-        public ActionResult getProducts([FromBody]  string  TokenNo)
+        public ActionResult getProducts([FromBody] string TokenNo)
         {
             try
             {
@@ -77,6 +77,23 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             }
         }
 
+        [HttpPost]
+        public ActionResult getDesktopProducts([FromBody] string TokenNo)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@TokenNo",TokenNo)
+                };
+                string data = dh.ReadToJson("[Insoft_S_GetDesktopProducts]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         [HttpPost]
         public ActionResult getProduct([FromBody] Products p)
@@ -84,7 +101,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             try
             {
                 SqlParameter[] parm = {
-                 
+
                     new SqlParameter("@Id",p.Id)
                 };
                 string data = dh.ReadToJson("[Insoft_S_GetProductById]", parm, CommandType.StoredProcedure);
@@ -125,7 +142,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
             try
             {
                 SqlParameter[] parm = {
-                 
+
                     new SqlParameter("@Id",p.Id)
                 };
                 string data = dh.ReadToJson("[Insoft_D_Product]", parm, CommandType.StoredProcedure);
