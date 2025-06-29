@@ -168,6 +168,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 new SqlParameter("@Initial", ai.Initial),
                 new SqlParameter("@MonthlyCharge", subProduct.MonthlyCharge),
                 new SqlParameter("@SerialNumber", ai.SerialNumber),
+                new SqlParameter("@InitialPaymentAmount",ai.InitialPaymentAmount),
                 new SqlParameter("@SiteURL", ai.SiteURL),
                  new SqlParameter("@Sukey", ai.Sukey),
                 new SqlParameter("@Remarks", subProduct.Remarks),
