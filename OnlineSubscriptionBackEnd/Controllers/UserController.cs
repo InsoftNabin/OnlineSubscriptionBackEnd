@@ -12,6 +12,7 @@ using OnlineSubscriptionBackEnd.Model.Insoft;
 
 namespace OnlineSubscriptionBackEnd.Controllers
 {
+    [Route("[controller]/[action]")]
     public class UserController : Controller
     {
         DataHandeler dh = new DataHandeler();
@@ -38,6 +39,27 @@ namespace OnlineSubscriptionBackEnd.Controllers
                 throw ex;
             }
         }
+
+        [HttpPost]
+        public JsonResult SaveSerialKey([FromBody] orgData org)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@TokenNo", org.TokenNo),
+                    new SqlParameter("@SerialKey",org.SerialKey),
+                    new SqlParameter("@primaryCustomerCode",org.OrgId)
+                };
+                int Block = dh.InsertUpdate("Usp_IU_SerialKey", parm, CommandType.StoredProcedure);
+                return Json(Block);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         [HttpPost]
         public JsonResult AddOrganization([FromBody] OrgDetails em)
