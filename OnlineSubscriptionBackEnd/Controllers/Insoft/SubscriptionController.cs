@@ -215,6 +215,23 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 throw ex;
             }
         }
+
+        [HttpPost]
+        public ActionResult Getcustomerforserialkey([FromBody] SerialKey p)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@subkeytype",p.SKey),
+                };
+                string data = dh.ReadToJson("[Insoft_s_customerbyserialkey_forlist]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         [HttpPost]
         public ActionResult getSubscriptionById([FromBody] Subscription p)
         {

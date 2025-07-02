@@ -90,6 +90,27 @@ namespace OnlineSubscriptionBackEnd.Controllers
 			}
 		}
 
-        
+
+        [HttpPost]
+        public JsonResult GetOTPCode([FromBody] EmailMessage em)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@email", em.ReceiverEmail)
+                };
+                string Block = dh.ReadToJson("[usp_S_GetOTPcodefromEmail]", parm, CommandType.StoredProcedure);
+
+                return Json(Block);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
     }
 }
