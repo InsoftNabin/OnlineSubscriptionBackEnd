@@ -43,7 +43,7 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
         {
             try
             {
-                int AffectedRows = 0;
+                string AffectedRows = "";
                 //string conn = "";
                 //conn = dh.ByToken(ai.TokenNo);
                 SqlParameter[] parm = {
@@ -64,11 +64,9 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                         new SqlParameter("@UserId",ai.UserId),
                         new SqlParameter("@Password",ai.@Password),
                         new SqlParameter("@Country",ai.Country)
-                        
-                        
                     };
-                AffectedRows = AffectedRows + dh.InsertUpdate("[Insoft_IU_Agent]", parm, CommandType.StoredProcedure);
-                return Json(AffectedRows);
+                DataTable dt =   dh.ReadData("[Insoft_IU_Agent]", parm, CommandType.StoredProcedure);
+                return Json(dt.Rows[0]["Message"].ToString());
             }
             catch (Exception ex)
             {
@@ -157,6 +155,24 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 throw ex;
             }
         }
+
+        [HttpPost]
+        public ActionResult getAgentsForCustomer([FromBody] string TokenNo)
+        {
+            try
+            {
+                SqlParameter[] parm = {
+                    new SqlParameter("@TokenNo",TokenNo)
+                };
+                string data = dh.ReadToJson("[Insoft_S_GetAllAgents_ForCustomer]", parm, CommandType.StoredProcedure);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         [HttpPost]
         public ActionResult getAgent([FromBody] Agent p)
         {

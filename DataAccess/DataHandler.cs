@@ -20,7 +20,7 @@ namespace DataAccess
 
 		//public string _connectionString = "Server=202.51.74.44,3694; Database=OnlineSubscription; user Id=insoftadmin; Password=!nsoft@dmin#2025Vm@KTM";
 
-		public string _connectionString = "Server=202.51.74.37,3694; Database=OnlineSubscription; user Id=insoftadmin; Password=!nsOftNeP@lDb#admin2025";
+		public string _connectionString = "Server=4.240.91.60,3637; Database=OnlineSubscription; user Id=sa; Password=ZrtxAzureSQl@2025#1";
 
 		public string ByToken(string TokenNo)
         {
