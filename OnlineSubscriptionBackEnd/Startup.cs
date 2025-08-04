@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using DataAccess;
+
 
 namespace OnlineSubscriptionBackEnd
 {
@@ -29,7 +31,7 @@ namespace OnlineSubscriptionBackEnd
         {
             services.AddControllers();
             connectiontring = Configuration.GetConnectionString("DefaultConnection");
-
+            DataHandeler._connectionStringFromStartUp = connectiontring;
             services.AddMvc();
             services.AddCors(options =>
             {
