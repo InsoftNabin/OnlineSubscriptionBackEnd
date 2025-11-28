@@ -442,13 +442,15 @@ namespace OnlineSubscriptionBackEnd.Controllers.Insoft
                 if (student.Count > 0)
                 {
                     var subscription = student[0];
-                    ResponceModel rm = new ResponceModel
-                    {
-                        Status = subscription.Status,
-                        Message = subscription.Message,
-                        ExpireDate = subscription.ExpireDate,
-                        RemainingDays = subscription.RemainingDays,
-                        LandingPage = subscription.LandingPage
+                    var rm = new {
+                        subscription.Status,
+                        subscription.Message,
+                        subscription.ExpireDate,
+                        subscription.RemainingDays,
+                        subscription.LandingPage,
+                        subscription.OrganizationName,
+                        subscription.OrganizationAddress,
+                        subscription.OrganizationContact,
                     };
 
                     return StatusCode(StatusCodes.Status200OK, rm);

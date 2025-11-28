@@ -7,6 +7,9 @@
         public string ExpireDate { get; set; }
         public string RemainingDays { get; set; }
         public string LandingPage { get; set; }
+        public string OrganizationName { get; set; }
+        public string OrganizationAddress { get; set; }
+        public string OrganizationContact { get; set; }
 
     }
 }
